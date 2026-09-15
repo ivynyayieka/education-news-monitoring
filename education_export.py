@@ -32,6 +32,15 @@ if not os.path.exists(RESULTS_PATH):
     print(f"{RESULTS_PATH} not found — search hasn't completed for week {WEEK_SLUG} yet. Nothing to do.")
     sys.exit(0)
 
+_expected_output = f"education-digest-{WEEK_SLUG}.html"
+if os.path.exists(_expected_output):
+    # This week's report was already generated and committed by an earlier
+    # run (e.g. a manual re-trigger after Monday's scheduled run already
+    # succeeded) — nothing changed since then, so skip re-rendering and
+    # creating a no-op commit.
+    print(f"{_expected_output} already exists — week {WEEK_SLUG} already published. Nothing to do.")
+    sys.exit(0)
+
 with open(RESULTS_PATH, "rb") as f:
     data = pickle.load(f)
 
@@ -75,16 +84,15 @@ SCALE_PORTFOLIO = ["Malawi", "Sierra Leone", "Tanzania"]
 PILOT_SITES     = ["Burkina Faso", "Ghana", "Liberia"]
 
 # Order themes appear under each country in the production report
-# Program-Specific Context always last — only shown for Scale Portfolio countries
+# Government & Program Context always last — only shown where PROGRAM_INTERESTS defined it
 PILLAR_ORDER = [
-    "Government Policy & Budget",
+    "Policy, Budget & Funding",
     "Learning Outcomes & Assessment",
-    "EdTech & Digital Learning",
-    "Teachers & School Infrastructure",
-    "Donor & Funding Landscape",
+    "Technology & Innovation in Education",
+    "Teachers, Schools & Continuity",
     "Education & the Workforce",
     "IW Mentions",
-    "Program-Specific Context",       # only appears where PROGRAM_INTERESTS defined it — Malawi/Sierra Leone/Tanzania
+    "Government & Program Context",   # only appears where PROGRAM_INTERESTS defined it — Malawi/Sierra Leone/Tanzania/Burkina Faso
 ]
 
 # ── Publisher reach scores ────────────────────────────────────────────────────

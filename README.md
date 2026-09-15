@@ -2,6 +2,7 @@
 
 Automated weekly news digest covering the education landscape across Scale Portfolio and Pilot Site countries. Runs every Monday; can also be triggered manually.
 
+**Live site:** not yet published — see "Publishing the report" below to enable GitHub Pages once you're ready.
 
 ---
 
@@ -10,15 +11,14 @@ Automated weekly news digest covering the education landscape across Scale Portf
 Each Monday at 01:00 UTC the pipeline runs automatically:
 
 1. Searches Google News RSS for 6 countries — 3 Scale Portfolio, 3 Pilot Sites
-2. For each country, runs searches across **6 general themes**, plus 2 additional themes:
-   - Government Policy & Budget
-   - Learning Outcomes & Assessment
-   - EdTech & Digital Learning
-   - Teachers & School Infrastructure
-   - Donor & Funding Landscape
+2. For each country, runs searches across **5 general themes**, plus 2 additional tracking themes:
+   - Policy, Budget & Funding (government policy/spending and external donor/funder activity together)
+   - Learning Outcomes & Assessment (includes foundational literacy/numeracy specifically)
+   - Technology & Innovation in Education (includes AI in education specifically)
+   - Teachers, Schools & Continuity (staffing/infrastructure and disruption — closures, conflict, climate events)
    - Education & the Workforce
    - IW Mentions (all 6 countries)
-   - Program-Specific Context — BEFIT / Pikin Tab / MsingiTek tracking, Scale Portfolio countries only
+   - Government & Program Context — BEFIT / Pikin Tab / MsingiTek and named ministries, for Malawi, Sierra Leone, Tanzania, and Burkina Faso only
 3. Attempts to extract verbatim article text directly from publisher pages
 4. Highlights articles mentioning **youth, women, people with disabilities, refugees, or IW by name**
 5. Publishes a production report split into Scale Portfolio and Pilot Sites sections

@@ -35,57 +35,75 @@ ALL_ENTITIES = SCALE_PORTFOLIO + PILOT_SITES   # 6 entities total — small enou
 # merged together under that theme.
 
 CATEGORIES = {
-    "Government Policy & Budget": [
+    "Policy, Budget & Funding": [
+        # domestic government policy and spending
         '"education policy" OR "curriculum reform" OR "education budget" OR "ministry of education" OR "education funding"',
         '"national education plan" OR "free primary education" OR "school fees" OR "public education spending"',
+        # external donor/funder activity — "education" is appended (AND, not part of the quoted phrase) to
+        # each org/term below, because these orgs and terms cover many sectors beyond education (health, WASH,
+        # nutrition, etc.) and without it the query would pull in a lot of irrelevant coverage
+        '"donor funding" education OR "NGO partnership" education OR "international aid" education',
+        '"Global Partnership for Education" OR "USAID" education OR "World Bank" education OR "UNICEF" education OR "Audacious Project" education OR "cost per child" education',
     ],
     "Learning Outcomes & Assessment": [
         '"literacy assessment" OR "numeracy assessment" OR "learning outcomes" OR "learning poverty" OR "EGRA" OR "EGMA"',
-        '"national exam results" OR "student achievement" OR "foundational learning"',
+        '"national exam results" OR "student achievement" OR "foundational learning" OR "foundational literacy" OR "foundational numeracy" OR "FLN"',
     ],
-    "EdTech & Digital Learning": [
+    "Technology & Innovation in Education": [
         '"education technology" OR "edtech" OR "digital learning" OR "tablet program" OR "e-learning"',
         '"school digitization" OR "ICT in education" OR "online learning platform"',
+        '"AI in education" OR "artificial intelligence" education OR "generative AI" education OR "AI tutor" OR "child safety" AI OR "education policy" AI',
     ],
-    "Teachers & School Infrastructure": [
+    "Teachers, Schools & Continuity": [
         '"teacher training" OR "teacher shortage" OR "untrained teachers" OR "teacher deployment"',
-        '"school infrastructure" OR "school electricity" OR "school connectivity" OR "solar power schools" OR "device repair"',
-    ],
-    "Donor & Funding Landscape": [
-        '"donor funding" OR "NGO partnership" OR "international aid" education',
-        '"Global Partnership for Education" OR "USAID education" OR "World Bank education" OR "UNICEF education" OR "Audacious Project" OR "cost per child"',
+        '"school infrastructure" OR "school electricity" OR "school connectivity" OR "solar power" schools OR "device repair"',
+        '"school closures" OR "school attack" OR insecurity schools OR conflict education OR "displaced students"',
+        '"education emergency" OR climate disaster schools OR cyclone school OR flood school closure OR "political unrest" schools',
     ],
     "Education & the Workforce": [
-        '"school to work transition" OR "youth employment" education OR "skills gap" OR "graduate employability" OR "TVET"',
-        '"education outcomes" employment OR "human capital" OR "labor market skills" OR "education economic growth"',
+        # "TVET" removed — Imagine's programs are foundational (early-grade) literacy/numeracy, not
+        # vocational/technical training, so TVET coverage isn't really this digest's audience
+        '"school to work transition" OR "youth employment" education OR "skills gap" OR "graduate employability"',
+        '"education outcomes" employment OR "human capital" OR "labor market skills" OR "economic growth" education',
     ],
     "IW Mentions": [
         '"Imagine Worldwide"',   # the actual search phrase has to stay the real org name for the RSS query to work — only the display label above is abbreviated; specific enough to be low-noise, but not a registered proper noun, so some false positives are expected and fine to skim past
     ],
 }
 
-# ── Program-specific context ──────────────────────────────────────────────────
-# Only the three Scale Portfolio countries have named government programs.
-# Where defined, this runs as an extra "Program-Specific Context" theme for
-# that entity only — Pilot Site countries simply don't get this theme added,
-# same pattern as the old job's QRM country-interest layer, just without the
-# WAEMU-style name substitution since each program name is unique here.
+# ── Government & program context ────────────────────────────────────────────
+# Tracks named programs (BEFIT/Pikin Tab/MsingiTek) and the specific education
+# ministries involved, where known. Runs as an extra "Government & Program
+# Context" theme for that entity only. Ghana isn't listed here because its
+# ministry is simply "Ministry of Education" — already covered by the generic
+# "ministry of education" term in the Policy theme above, so a special-case
+# entry would be redundant. Liberia has no entry — no specific program or
+# distinctly-named ministry identified yet to track.
 PROGRAM_INTERESTS = {
     "Malawi": [
-        '"BEFIT" OR "Building Education Foundations through Innovation and Technology" OR "Ministry of Education Science and Technology Malawi"',
+        # official name is "Ministry of Education, Science and Technology" — kept separate from the plain
+        # "Ministry of Education" fallback since some outlets (especially non-Malawian ones) may use the
+        # shorter, simpler name rather than the full official one
+        '"BEFIT" OR "Building Education Foundations through Innovation and Technology" OR "Ministry of Education, Science and Technology" OR "Ministry of Education"',
     ],
     "Sierra Leone": [
-        '"Pikin Tab" OR "Digital Foundational Learning Program" OR "MBSSE" Sierra Leone',
+        '"Pikin Tab" OR "Digital Foundational Learning Program" OR "MBSSE" OR "Ministry of Basic and Senior Secondary Education"',
     ],
     "Tanzania": [
-        '"MsingiTek" OR "PO-RALG" Tanzania',
+        # English and Swahili names both included — local Tanzanian press may use either
+        '"MsingiTek" OR "PO-RALG" OR "Ministry of Education, Science and Technology" OR "Wizara ya Elimu, Sayansi na Teknolojia"',
+    ],
+    "Burkina Faso": [
+        # English and French names both included — Burkina Faso is Francophone, so French-language press
+        # coverage is likely to use the French name rather than a translation
+        '"Ministry of National Education and Literacy" OR "Ministère de l\'Education Nationale, de l\'Alphabétisation et de la Promotion des Langues Nationales"',
     ],
 }
 
 
 def get_program_context(entity):
-    """Return the Program-Specific Context keyword list for an entity, or empty list if none defined."""
-    return PROGRAM_INTERESTS.get(entity, [])   # Ghana/Liberia/Burkina Faso return [] — theme is skipped entirely for them
+    """Return the Government & Program Context keyword list for an entity, or empty list if none defined."""
+    return PROGRAM_INTERESTS.get(entity, [])   # Ghana/Liberia return [] — theme is skipped entirely for them
 
 
 # ── Demographic tags ───────────────────────────────────────────────────────────
@@ -428,7 +446,7 @@ def process_entity(entity):
 
     program_kws = get_program_context(entity)                # empty list for Ghana/Liberia/Burkina Faso
     if program_kws:
-        all_categories["Program-Specific Context"] = program_kws   # adds an 8th theme for Malawi/Sierra Leone/Tanzania only
+        all_categories["Government & Program Context"] = program_kws   # adds an extra theme for Malawi/Sierra Leone/Tanzania/Burkina Faso only
 
     for cat_name, keyword_list in all_categories.items():
         cat_articles = []
