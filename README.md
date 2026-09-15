@@ -2,7 +2,7 @@
 
 Automated weekly news digest covering the education landscape across Scale Portfolio and Pilot Site countries. Runs every Monday; can also be triggered manually.
 
-**Live site:** <a href="https://ivynyayieka.github.io/education-news-monitoring/"> Education News Reporting </a>
+**Live site:** <a href="https://ivynyayieka.github.io/education-news-monitoring/"> Education News Roundup </a>
 
 ---
 
