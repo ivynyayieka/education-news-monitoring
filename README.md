@@ -2,8 +2,7 @@
 
 Automated weekly news digest covering the education landscape across Scale Portfolio and Pilot Site countries. Runs every Monday; can also be triggered manually.
 
-**Live site:** not yet published — see "Publishing the report" below to enable GitHub Pages once you're ready.
-
+**Live site:** 
 ---
 
 ## What it does
@@ -42,7 +41,7 @@ Files are named by the calendar week (the Monday that week started), not by the 
 
 ## Countries covered
 
-### Scale Portfolio (national government-scale programs)
+### Scale Portfolio
 Malawi (BEFIT) · Sierra Leone (Pikin Tab) · Tanzania (MsingiTek)
 
 ### Pilot Sites
