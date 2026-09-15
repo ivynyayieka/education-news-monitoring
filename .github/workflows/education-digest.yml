@@ -1,0 +1,48 @@
+# education-digest.yml
+# GitHub Actions workflow — runs the Imagine Worldwide education digest pipeline automatically.
+# Place this file at: .github/workflows/education-digest.yml
+# in your new repo (a ".github/workflows/" folder, at the repo root).
+#
+# Kept as a single job, unlike the sharded africa-monitor workflow — this
+# digest only covers 6 countries, so a full run should finish in minutes,
+# nowhere near GitHub's 6-hour job limit. If this ever grows to cover many
+# more countries, the same matrix-shard pattern from africa-monitor could be
+# reused here.
+
+name: Weekly Education Digest   # display name shown in the GitHub Actions tab
+
+on:
+  schedule:
+    - cron: '0 1 * * 1'      # run at 01:00 UTC every Monday
+  workflow_dispatch:          # also allows manual trigger from the Actions tab — use this for your first test run
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60       # generous ceiling for 6 countries — a full run should take well under this
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v5
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 lxml
+
+      - name: Run search                      # fetches RSS for all 6 countries, extracts text, saves .checkpoints/results-<week>.pkl
+        run: python education_search.py
+
+      - name: Run production export           # reads this week's results.pkl, produces education-digest-YYYY-MM-DD.html, index.html, and CSV
+        run: python education_export.py
+
+      - name: Commit and push outputs
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A                                                          # stage everything, including .checkpoints/ and the generated report/CSV/index
+          git commit -m "Weekly education digest $(date -u +'%Y-%m-%d')" || echo "Nothing to commit"
+          git push
