@@ -2,7 +2,6 @@
 
 Automated weekly news digest covering the education landscape across Scale Portfolio and Pilot Site countries. Runs every Monday; can also be triggered manually.
 
-**Live site:** not yet published — see "Publishing the report" below to enable GitHub Pages once you're ready.
 
 ---
 
