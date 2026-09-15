@@ -47,14 +47,15 @@ print(f"Loaded {len(results)} entities | {total_a} articles | {total_t} with tex
 # ── Tag labels and colours ────────────────────────────────────────────────────
 # Tags are applied to articles where these terms appear in the title or text.
 # "imagine" replaces the old job's "wdl" (World Data Lab) tag — here it flags
-# articles that mention Imagine Worldwide by name, which is more useful for
-# this digest than for the prior one.
+# articles that mention the org by name, which is more useful for
+# this digest than for the prior one. Displayed as "IW" rather than spelled
+# out, pending internal review before the org's name appears in public output.
 DEMO_LABELS = {
     "youth":     "Youth",             # youth employment / young people
     "women":     "Women",             # gender gaps in education outcomes
     "disabilit": "Disabilities",      # disability inclusion in education
     "refugee":   "Refugees",          # refugee/displaced learners — e.g. Dzaleka camp programs
-    "imagine":   "Imagine Worldwide", # article mentions Imagine Worldwide by name
+    "imagine":   "IW",                # article mentions the org by name — abbreviated in all display output
 }
 
 DEMO_COLOURS = {
@@ -82,7 +83,7 @@ PILLAR_ORDER = [
     "Teachers & School Infrastructure",
     "Donor & Funding Landscape",
     "Education & the Workforce",
-    "Imagine Worldwide Mentions",
+    "IW Mentions",
     "Program-Specific Context",       # only appears where PROGRAM_INTERESTS defined it — Malawi/Sierra Leone/Tanzania
 ]
 
@@ -123,7 +124,7 @@ def reach_score(article, rss_position):
 
 
 def has_org_mention(article):
-    """Return True if 'Imagine Worldwide' appears in the article title or any extracted paragraph."""
+    """Return True if the org's name appears in the article title or any extracted paragraph."""
     haystack = article.get("title", "").lower()
     for p in article.get("paragraphs", []):
         haystack += " " + p.lower()
@@ -131,7 +132,7 @@ def has_org_mention(article):
 
 
 def get_all_tags(article):
-    """Return the complete list of tags for one article: demographic tags + 'imagine' if Imagine Worldwide is mentioned."""
+    """Return the complete list of tags for one article: demographic tags + 'imagine' if the org is mentioned."""
     tags = list(article.get("demo_tags", []))
     if has_org_mention(article):
         tags.append("imagine")
@@ -161,7 +162,7 @@ def build_csv(results, path):
     """Write one row per article to a CSV file with all metadata and extracted text."""
     fields = [
         "entity", "pillar", "title", "url", "source", "date",
-        "demographics", "imagine_mention",
+        "demographics", "iw_mention",
         "text_paragraph_1", "text_paragraph_2", "text_paragraph_3",
         "has_text", "is_google_link", "rss_position", "reach_score",
     ]
@@ -182,7 +183,7 @@ def build_csv(results, path):
                                             DEMO_LABELS.get(t, t)
                                             for t in a.get("demo_tags", [])
                                          ),
-                    "imagine_mention":   "yes" if has_org_mention(a) else "no",
+                    "iw_mention":   "yes" if has_org_mention(a) else "no",
                     "text_paragraph_1":  paras[0] if len(paras) > 0 else "",
                     "text_paragraph_2":  paras[1] if len(paras) > 1 else "",
                     "text_paragraph_3":  paras[2] if len(paras) > 2 else "",
@@ -600,7 +601,7 @@ body {{ font-family: var(--serif); background: var(--paper); color: var(--ink); 
 
 <header class="masthead">
   <p class="masthead-eyebrow">Weekly Education Landscape Digest</p>
-  <h1>Imagine Worldwide<br>Scale &amp; Pilot Countries</h1>
+  <h1>Education Landscape<br>Scale &amp; Pilot Countries</h1>
   <p class="masthead-dateline">{prod_date}</p>
 </header>
 
@@ -616,7 +617,7 @@ body {{ font-family: var(--serif); background: var(--paper); color: var(--ink); 
 </div>
 
 <footer class="footer">
-  <strong>Weekly Education Landscape Digest: Imagine Worldwide Scale &amp; Pilot Countries</strong><br>
+  <strong>Weekly Education Landscape Digest: Scale &amp; Pilot Countries</strong><br>
   {prod_date} &nbsp;·&nbsp; {generated}<br>
   Articles sourced from Google News RSS · Top {MAX_PER_COUNTRY} per country ranked by estimated reach<br>
   Excerpts reproduced verbatim from publisher pages where accessible<br><br>
@@ -624,7 +625,7 @@ body {{ font-family: var(--serif); background: var(--paper); color: var(--ink); 
   title to read the full piece on the original publisher's site. Content has not been
   editorially reviewed.<br><br>
   Tags applied where terms appear in article titles or extracted text:
-  <strong>Youth · Women · Disabilities · Refugees · Imagine Worldwide</strong>
+  <strong>Youth · Women · Disabilities · Refugees · IW</strong>
 </footer>
 
 </body>
@@ -666,7 +667,7 @@ index_html = f"""<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Weekly Education Landscape Digest — Imagine Worldwide</title>
+<title>Weekly Education Landscape Digest</title>
 <style>
 *, *::before, *::after {{ box-sizing: border-box; margin: 0; padding: 0; }}
 :root {{ --paper: #f5f2eb; --ink: #1a1a18; --ink-3: #7a7a72; --accent: #1c3d5c; --rule: #ccc9be; }}
@@ -693,7 +694,7 @@ li a:hover {{ color: var(--ink); }}
 <body>
 <div class="masthead">
   <p class="eyebrow">Archive</p>
-  <h1>Weekly Education Landscape Digest:<br>Imagine Worldwide Scale &amp; Pilot Countries</h1>
+  <h1>Weekly Education Landscape Digest:<br>Scale &amp; Pilot Countries</h1>
   <p class="dateline">All issues</p>
 </div>
 <div class="container">

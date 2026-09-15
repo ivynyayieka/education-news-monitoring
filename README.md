@@ -1,6 +1,6 @@
-# Imagine Worldwide Education Landscape Digest
+# Weekly Education Landscape Digest
 
-Automated weekly news digest covering the education landscape across Imagine Worldwide's Scale Portfolio and Pilot Site countries. Runs every Monday; can also be triggered manually.
+Automated weekly news digest covering the education landscape across Scale Portfolio and Pilot Site countries. Runs every Monday; can also be triggered manually.
 
 **Live site:** not yet published — see "Publishing the report" below to enable GitHub Pages once you're ready.
 
@@ -18,10 +18,10 @@ Each Monday at 01:00 UTC the pipeline runs automatically:
    - Teachers & School Infrastructure
    - Donor & Funding Landscape
    - Education & the Workforce
-   - Imagine Worldwide Mentions (all 6 countries)
+   - IW Mentions (all 6 countries)
    - Program-Specific Context — BEFIT / Pikin Tab / MsingiTek tracking, Scale Portfolio countries only
 3. Attempts to extract verbatim article text directly from publisher pages
-4. Highlights articles mentioning **youth, women, people with disabilities, refugees, or Imagine Worldwide by name**
+4. Highlights articles mentioning **youth, women, people with disabilities, refugees, or IW by name**
 5. Publishes a production report split into Scale Portfolio and Pilot Sites sections
 6. Saves a full CSV export of all articles collected
 
@@ -95,7 +95,7 @@ If none succeed, the Google News link is kept as a clickable fallback.
 Once a real article URL is found, the page is fetched and parsed. Noise (ads, navbars, footers, paywalls, subscription prompts) is removed. Article body selectors are tried from most specific (`[itemprop='articleBody']`, `article`) to least specific (`main`, `#content`). Text is reproduced verbatim — no summarisation, no paraphrasing.
 
 ### Demographic and org tagging
-Articles are tagged automatically if their title contains: `youth`, `women`, `disabilit` (catches disability/disabilities), or `refugee`. A separate check flags articles whose title or extracted text mentions "Imagine Worldwide" by name. Tags are shown as coloured badges in the HTML output and recorded in the CSV.
+Articles are tagged automatically if their title contains: `youth`, `women`, `disabilit` (catches disability/disabilities), or `refugee`. A separate check flags articles whose title or extracted text mentions IW by name. Tags are shown as coloured badges in the HTML output and recorded in the CSV.
 
 ### Themes with no results
 If a theme turns up nothing for a country in a given week, it's simply omitted from that country's section — there's no "no results" placeholder shown per theme. A country is only skipped entirely if every theme came back empty for it. A whole section (Scale Portfolio or Pilot Sites) only shows a fallback message if every country in it had nothing at all.
@@ -113,7 +113,7 @@ If a theme turns up nothing for a country in a given week, it's simply omitted f
 | `source` | Publisher name |
 | `date` | Publication date |
 | `demographics` | Comma-separated demographic labels found in title |
-| `imagine_mention` | `yes` if "Imagine Worldwide" appears in the title or extracted text |
+| `iw_mention` | `yes` if IW is mentioned in the title or extracted text |
 | `text_paragraph_1` | First verbatim paragraph extracted from article |
 | `text_paragraph_2` | Second verbatim paragraph |
 | `text_paragraph_3` | Third verbatim paragraph |

@@ -1,6 +1,6 @@
 # education_search.py
 # Weekly education-landscape digest — search script.
-# Covers Imagine Worldwide's Scale Portfolio and Pilot Site countries,
+# Covers the org's Scale Portfolio and Pilot Site countries,
 # scans Google News RSS for education-related coverage, extracts article
 # text where possible, and saves results.pkl for education_export.py to
 # turn into the HTML report and CSV.
@@ -21,7 +21,7 @@ from datetime import datetime, timedelta
 from bs4 import BeautifulSoup
 
 # ── Countries covered ─────────────────────────────────────────────────────────
-# Split into the two groups Imagine Worldwide uses, so the export script can
+# Split into the two groups used internally, so the export script can
 # show them as two separate sections in the report.
 
 SCALE_PORTFOLIO = ["Malawi", "Sierra Leone", "Tanzania"]      # countries with national government-scale programs (BEFIT, Pikin Tab, MsingiTek)
@@ -59,8 +59,8 @@ CATEGORIES = {
         '"school to work transition" OR "youth employment" education OR "skills gap" OR "graduate employability" OR "TVET"',
         '"education outcomes" employment OR "human capital" OR "labor market skills" OR "education economic growth"',
     ],
-    "Imagine Worldwide Mentions": [
-        '"Imagine Worldwide"',   # single line — "Imagine Worldwide" as a phrase is specific enough to be low-noise, but not a registered proper noun, so some false positives are expected and fine to skim past
+    "IW Mentions": [
+        '"Imagine Worldwide"',   # the actual search phrase has to stay the real org name for the RSS query to work — only the display label above is abbreviated; specific enough to be low-noise, but not a registered proper noun, so some false positives are expected and fine to skim past
     ],
 }
 
@@ -92,7 +92,7 @@ def get_program_context(entity):
 # Applied to articles where these terms appear in the title — shown as badges
 # on each article card in the report. Still relevant here: gender gaps in
 # learning outcomes, disability inclusion, and refugee learners (e.g. Dzaleka
-# camp in Malawi) all come up in Imagine Worldwide's own reporting.
+# camp in Malawi) all come up in the org's own reporting.
 DEMOGRAPHICS = ["youth", "women", "disabilit", "refugee"]
 DEMO_LABELS  = {"youth": "youth", "women": "women", "disabilit": "disabilities", "refugee": "refugees"}
 DEMO_COLOURS = {"youth": "#1a6fbf", "women": "#9b2e8a", "disabilit": "#2e8a4a", "refugee": "#bf6a1a"}
