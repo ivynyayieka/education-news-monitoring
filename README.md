@@ -1,73 +1,200 @@
-# Weekly Education Landscape Digest
+# Imagine Worldwide Education Landscape Digest
 
-Scans Google News RSS weekly for education-landscape coverage across
-Organization's Scale Portfolio countries (Malawi, Sierra Leone,
-Tanzania) and Pilot Sites (Burkina Faso, Ghana, Liberia), and produces a
-readable HTML report plus a full CSV data export.
+Automated weekly news digest covering the education landscape across Imagine Worldwide's Scale Portfolio and Pilot Site countries. Runs every Monday; can also be triggered manually.
 
-## What to upload, and where
+**Live site:** not yet published — see "Publishing the report" below to enable GitHub Pages once you're ready.
 
-Create a new (or use an existing empty) GitHub repo, then add these files
-at the paths shown — the folder structure matters, especially for the
-workflow file:
+---
+
+## What it does
+
+Each Monday at 01:00 UTC the pipeline runs automatically:
+
+1. Searches Google News RSS for 6 countries — 3 Scale Portfolio, 3 Pilot Sites
+2. For each country, runs searches across **6 general themes**, plus 2 additional themes:
+   - Government Policy & Budget
+   - Learning Outcomes & Assessment
+   - EdTech & Digital Learning
+   - Teachers & School Infrastructure
+   - Donor & Funding Landscape
+   - Education & the Workforce
+   - Imagine Worldwide Mentions (all 6 countries)
+   - Program-Specific Context — BEFIT / Pikin Tab / MsingiTek tracking, Scale Portfolio countries only
+3. Attempts to extract verbatim article text directly from publisher pages
+4. Highlights articles mentioning **youth, women, people with disabilities, refugees, or Imagine Worldwide by name**
+5. Publishes a production report split into Scale Portfolio and Pilot Sites sections
+6. Saves a full CSV export of all articles collected
+
+---
+
+## Output files
+
+Each weekly run produces three new files committed to this repo:
+
+| File | Description |
+|------|-------------|
+| `education-digest-YYYY-MM-DD.html` | Production report — filtered, designed, ready to publish to GitHub Pages |
+| `education-digest-YYYY-MM-DD.csv` | Full data export — all 6 countries, all themes, all articles |
+| `index.html` | Archive page — lists all past issues with links (updated each run) |
+
+Files are named by the calendar week (the Monday that week started), not by the exact moment the job ran, so a retry later in the week updates the same week's files rather than creating duplicates. See "How the search window works" below.
+
+---
+
+## Countries covered
+
+### Scale Portfolio (national government-scale programs)
+Malawi (BEFIT) · Sierra Leone (Pikin Tab) · Tanzania (MsingiTek)
+
+### Pilot Sites
+Burkina Faso · Ghana · Liberia
+
+---
+
+## Repository structure
 
 ```
 your-repo/
-├── education_search.py                    ← repo root
-├── education_export.py                    ← repo root
-└── .github/
-    └── workflows/
-        └── education-digest.yml           ← MUST be in this exact folder — GitHub only
-                                              looks for workflows here
+├── education_search.py            Main search script — fetches RSS, extracts text, saves results.pkl
+├── education_export.py            Export script — reads results.pkl, writes HTML and CSV outputs
+├── .github/
+│   └── workflows/
+│       └── education-digest.yml   GitHub Actions workflow — runs the pipeline every Monday
+├── .checkpoints/                  Per-week progress files (auto-created, see below)
+├── index.html                     Archive page (auto-generated, updated each run)
+├── education-digest-YYYY-MM-DD.html  Weekly production reports (one per week, never overwritten)
+└── education-digest-YYYY-MM-DD.csv   Full data exports (one per week, never overwritten)
 ```
 
-`education-digest.yml` is currently named without the `.github/workflows/`
-path in front of it (that's just how it was handed to you) — when you
-upload it, put it inside a `.github/workflows/` folder, not at the repo
-root. On GitHub's web UI: create the repo, click "Add file → Create new
-file," type `.github/workflows/education-digest.yml` as the filename (GitHub
-will create the folders for you), and paste the contents in.
+None of the auto-generated files or folders need to exist before the first run — the workflow creates all of them.
 
+---
+
+## How the search works
+
+### Google News RSS
+The pipeline queries Google News RSS with the format:
+```
+"Country Name" (keyword1 OR keyword2) after:YYYY-MM-DD
+```
+RSS is fetched directly — no API key, no cost, no third-party dependency.
+
+### How the search window works
+The search window is anchored to the current calendar week's Monday, not to the exact moment the script runs — so a manual re-run midweek searches the same window as Monday's scheduled run did, rather than shifting forward and re-covering some days twice. Progress is also checkpointed per entity in `.checkpoints/`, so an interrupted run resumes rather than starting over, and a week that already completed won't be silently redone by a later trigger.
+
+### URL resolution (three methods in sequence)
+Because Google News links are redirects that hit a consent wall in some regions, the pipeline tries three methods to get the real article URL:
+
+1. **Follow Google redirect** — works for publishers that redirect cleanly without a consent gate
+2. **Publisher site search** — searches the publisher's own site using common search endpoint patterns
+3. **URL slug construction** — constructs likely article URLs from the title and tests them
+
+If none succeed, the Google News link is kept as a clickable fallback.
+
+### Text extraction
+Once a real article URL is found, the page is fetched and parsed. Noise (ads, navbars, footers, paywalls, subscription prompts) is removed. Article body selectors are tried from most specific (`[itemprop='articleBody']`, `article`) to least specific (`main`, `#content`). Text is reproduced verbatim — no summarisation, no paraphrasing.
+
+### Demographic and org tagging
+Articles are tagged automatically if their title contains: `youth`, `women`, `disabilit` (catches disability/disabilities), or `refugee`. A separate check flags articles whose title or extracted text mentions "Imagine Worldwide" by name. Tags are shown as coloured badges in the HTML output and recorded in the CSV.
+
+### Themes with no results
+If a theme turns up nothing for a country in a given week, it's simply omitted from that country's section — there's no "no results" placeholder shown per theme. A country is only skipped entirely if every theme came back empty for it. A whole section (Scale Portfolio or Pilot Sites) only shows a fallback message if every country in it had nothing at all.
+
+---
+
+## CSV columns
+
+| Column | Description |
+|--------|-------------|
+| `entity` | Country name |
+| `pillar` | Theme the article was found under |
+| `title` | Article headline |
+| `url` | Direct article URL or Google News link |
+| `source` | Publisher name |
+| `date` | Publication date |
+| `demographics` | Comma-separated demographic labels found in title |
+| `imagine_mention` | `yes` if "Imagine Worldwide" appears in the title or extracted text |
+| `text_paragraph_1` | First verbatim paragraph extracted from article |
+| `text_paragraph_2` | Second verbatim paragraph |
+| `text_paragraph_3` | Third verbatim paragraph |
+| `has_text` | `yes` if text was extracted, `no` if only link available |
+| `is_google_link` | `yes` if URL is still a Google News redirect |
+| `rss_position` | Article's position in the Google News RSS feed (0 = top) |
+| `reach_score` | Computed popularity score used to pick which articles appear in the report |
+
+---
+
+## Setup — uploading to GitHub
+
+Create a new (or use an existing empty) GitHub repo, then add the files at
+the paths shown in "Repository structure" above. The workflow file's
+location matters — it must be inside `.github/workflows/`, not at the repo
+root. On GitHub's web UI: create the repo, click **Add file → Create new
+file**, type `.github/workflows/education-digest.yml` as the filename
+(GitHub creates the folders for you), and paste the contents in.
 `education_search.py` and `education_export.py` go directly in the repo
-root, same level as the `.github` folder.
+root.
 
-You do **not** need to create `.checkpoints/`, the CSV, the HTML report, or
-`index.html` yourself — the workflow creates all of those automatically on
-its first run and commits them back to the repo.
-
-## Running it for the first time
-
-1. Push the three files above to GitHub in the structure shown.
-2. Go to the repo's **Actions** tab. GitHub should show "Weekly Education
-   Digest" as an available workflow (if it doesn't appear, double check the
-   yml file is exactly at `.github/workflows/education-digest.yml`).
-3. Click into the workflow, then **Run workflow** (this is the
-   `workflow_dispatch` trigger in the yml — it lets you trigger a run
-   manually instead of waiting for Monday).
-4. Watch the run — for 6 countries this should take well under an hour.
-   When it finishes, check the repo: you should see
-   `education-digest-<date>.html`, `index.html`, a CSV, and a
-   `.checkpoints/` folder all committed automatically.
-
-## Repository permissions
-
+### Repository permissions
 The workflow's last step pushes commits back to the repo using GitHub's
 built-in `GITHUB_TOKEN`. If the push step fails with a permissions error,
-go to **Settings → Actions → General → Workflow permissions** in the repo
-and set it to "Read and write permissions."
+go to **Settings → Actions → General → Workflow permissions** and set it to
+"Read and write permissions."
 
-## A note on themes with no results
+---
 
-If a theme (e.g. "Donor & Funding Landscape") turns up nothing for a given
-country in a given week, it's simply omitted from that country's section in
-the report — there's no "no results" placeholder shown per theme. A whole
-country is only skipped entirely if *every* theme comes back empty for it.
-A whole section (Scale Portfolio or Pilot Sites) only shows a fallback
-message if every country in that section had nothing at all.
+## Running manually
+
+### Trigger via GitHub Actions (no local setup needed)
+1. Go to the repo on GitHub
+2. Click the **Actions** tab
+3. Click **Weekly Education Digest** in the left sidebar
+4. Click **Run workflow** → **Run workflow**
+5. For 6 countries, the run should take well under an hour
+6. When complete, new files appear in the repo
+
+### Run locally
+```bash
+# Clone the repo
+git clone https://github.com/<your-username>/<your-repo>.git
+cd <your-repo>
+
+# Install dependencies (one time)
+pip install requests beautifulsoup4 lxml
+
+# Run the search
+python education_search.py
+
+# Generate HTML and CSV outputs
+python education_export.py
+```
+
+For a quick test on 2 countries only, open `education_search.py` and change:
+```python
+TEST_MODE = False
+```
+to:
+```python
+TEST_MODE = True
+```
+then run — this covers Malawi and Ghana only, one Scale country and one Pilot country.
+
+---
 
 ## Publishing the report (optional)
 
-If you want `education-digest-<date>.html` viewable as a real webpage
-rather than just a file in the repo, enable GitHub Pages: **Settings →
-Pages → Deploy from a branch → main → / (root)**. `index.html` will then
-serve as the landing/archive page.
+To make `education-digest-<date>.html` viewable as a real webpage instead
+of just a file in the repo, enable GitHub Pages: **Settings → Pages →
+Deploy from a branch → main → / (root)**. `index.html` will then serve as
+the landing/archive page, and you can update the "Live site" link at the
+top of this README.
+
+---
+
+## Notes
+
+- Article text is reproduced verbatim from source pages. Where text is not accessible (paywalled or blocked), only the title and link are shown.
+- The production report shows a maximum of 3 articles per country, pooled across all themes and prioritised by estimated popularity (publisher reach, RSS position, and whether text was extracted).
+- This digest is produced automatically. It has not been editorially reviewed. Kindly click each article title to read the full piece on the original publisher's site.
+- Google News RSS is free and requires no authentication. The pipeline has no paid dependencies.
+- Coverage may be thin some weeks — Malawi, Sierra Leone, Tanzania, Ghana, Liberia, and Burkina Faso get less English-language international press than larger media markets, so an empty theme or country in a given week reflects available coverage, not a pipeline error.
