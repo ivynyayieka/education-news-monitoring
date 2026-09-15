@@ -106,6 +106,44 @@ def get_program_context(entity):
     return PROGRAM_INTERESTS.get(entity, [])   # Ghana/Liberia return [] — theme is skipped entirely for them
 
 
+# ── French-language supplement for Francophone entities ────────────────────────
+# Burkina Faso is Francophone, and its press coverage is often in French — the
+# 5 general themes above are all English-only, so without this, French-language
+# coverage of Burkina Faso is largely invisible to the digest even when it
+# exists. This is a separate mechanism from PROGRAM_INTERESTS above: it adds an
+# extra French-language keyword line onto each of the existing general themes
+# for that entity, rather than adding a whole new theme. Structured as a dict
+# keyed by entity so another Francophone country (should one join the pilot
+# sites later) can be added the same way.
+FRENCH_SUPPLEMENT = {
+    "Burkina Faso": {
+        "Policy, Budget & Funding": (
+            '"politique éducative" OR "réforme du curriculum" OR "budget de l\'éducation" OR '
+            '"ministère de l\'éducation" OR "financement de l\'éducation" OR "aide internationale" éducation'
+        ),
+        "Learning Outcomes & Assessment": (
+            '"évaluation de la lecture" OR "évaluation du calcul" OR "résultats d\'apprentissage" OR '
+            '"apprentissage fondamental" OR "littératie fondamentale" OR "numératie fondamentale"'
+        ),
+        "Technology & Innovation in Education": (
+            '"technologie éducative" OR "apprentissage numérique" OR "intelligence artificielle" éducation'
+        ),
+        "Teachers, Schools & Continuity": (
+            '"formation des enseignants" OR "pénurie d\'enseignants" OR "fermeture des écoles" OR '
+            '"insécurité" écoles OR "attaque" école'
+        ),
+        "Education & the Workforce": (
+            '"transition école-emploi" OR "emploi des jeunes" éducation OR "compétences" emploi'
+        ),
+    },
+}
+
+
+def get_french_supplement(entity, theme_name):
+    """Return the French-language keyword line to append to a theme for this entity, or None if not applicable."""
+    return FRENCH_SUPPLEMENT.get(entity, {}).get(theme_name)
+
+
 # ── Demographic tags ───────────────────────────────────────────────────────────
 # Applied to articles where these terms appear in the title — shown as badges
 # on each article card in the report. Still relevant here: gender gaps in
@@ -442,11 +480,16 @@ def process_entity(entity):
     entity_result = {"entity": entity, "categories": {}}
     seen_titles   = set()
 
-    all_categories = dict(CATEGORIES)                        # start with the 7 standard themes
+    all_categories = dict(CATEGORIES)                        # start with the standard themes — note: dict(CATEGORIES) is a shallow copy, so the lists inside are shared with CATEGORIES until reassigned below; never .append() to them directly or it would leak into every other entity's run too
 
-    program_kws = get_program_context(entity)                # empty list for Ghana/Liberia/Burkina Faso
+    program_kws = get_program_context(entity)                # empty list for Ghana/Liberia
     if program_kws:
         all_categories["Government & Program Context"] = program_kws   # adds an extra theme for Malawi/Sierra Leone/Tanzania/Burkina Faso only
+
+    for cat_name in list(all_categories.keys()):              # French supplement — appends an extra keyword line onto the existing list for this entity only, via reassignment (not in-place mutation) so CATEGORIES itself stays untouched for other entities
+        french_kw = get_french_supplement(entity, cat_name)
+        if french_kw:
+            all_categories[cat_name] = all_categories[cat_name] + [french_kw]
 
     for cat_name, keyword_list in all_categories.items():
         cat_articles = []

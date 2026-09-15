@@ -236,8 +236,19 @@ def get_top_articles(entity_data, n=MAX_PER_COUNTRY):
     return all_articles[:n]
 
 
+def _comment_safe(text):
+    """HTML comments can't contain '--', so strip it before dropping text into a comment marker."""
+    return text.replace("--", "—")
+
+
 def render_article_card(a):
-    """Render one article as a clean editorial card. 'Read article' appears as a hyperlink when no excerpt text is available."""
+    """
+    Render one article as a clean editorial card, wrapped in comment markers
+    that make manual review easy: delete everything between the ARTICLE and
+    END ARTICLE markers to remove an article; where no excerpt was extracted,
+    a comment shows exactly where to paste one in if you want to add it.
+    'Read article' appears as a hyperlink when no excerpt text is available.
+    """
     is_google = "google.com" in a["url"]
     tags      = get_all_tags(a)
 
@@ -260,16 +271,22 @@ def render_article_card(a):
             + "</div>"
         )
     elif is_google or a.get("url"):
+        # No excerpt was extracted — mark exactly where one could be added by hand.
         ex_html = (
-            f'<p class="read-link">'
-            f'<a href="{esc(a["url"])}" target="_blank" rel="noopener">Read article</a>'
-            f'</p>'
+            '<!-- NO EXCERPT — to add one, replace the <p class="read-link"> line below with:\n'
+            '     <div class="excerpt"><p>First paragraph…</p><p>Second paragraph… (optional)</p></div> -->\n'
+            + f'<p class="read-link">'
+              f'<a href="{esc(a["url"])}" target="_blank" rel="noopener">Read article</a>'
+              f'</p>'
         )
     else:
         ex_html = ""
 
+    title_marker = _comment_safe(a["title"])[:80]   # truncated so a very long headline doesn't make the marker unwieldy
+
     return (
-        '<article class="card">\n'
+        f'<!-- ══════ ARTICLE: {title_marker} — delete this whole block down to "END ARTICLE" to remove it ══════ -->\n'
+        + '<article class="card">\n'
         + tags_html
         + f'<h4 class="card-hed">'
           f'<a href="{esc(a["url"])}" target="_blank" rel="noopener">'
@@ -277,6 +294,7 @@ def render_article_card(a):
         + (f'<p class="card-meta">{esc(meta)}</p>\n' if meta else "")
         + ex_html
         + "\n</article>\n"
+        + '<!-- ══════ END ARTICLE ══════ -->\n'
     )
 
 
@@ -366,7 +384,7 @@ prod_html = f"""<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Weekly Education Landscape Digest — {prod_date}</title>
+<title>Education News Roundup — {prod_date}</title>
 <style>
 *, *::before, *::after {{ box-sizing: border-box; margin: 0; padding: 0; }}
 :root {{
@@ -608,8 +626,8 @@ body {{ font-family: var(--serif); background: var(--paper); color: var(--ink); 
 <body>
 
 <header class="masthead">
-  <p class="masthead-eyebrow">Weekly Education Landscape Digest</p>
-  <h1>Education Landscape<br>Scale &amp; Pilot Countries</h1>
+  <p class="masthead-eyebrow">Weekly Digest</p>
+  <h1>Education News Roundup</h1>
   <p class="masthead-dateline">{prod_date}</p>
 </header>
 
@@ -625,12 +643,12 @@ body {{ font-family: var(--serif); background: var(--paper); color: var(--ink); 
 </div>
 
 <footer class="footer">
-  <strong>Weekly Education Landscape Digest: Scale &amp; Pilot Countries</strong><br>
+  <strong>Education News Roundup</strong><br>
   {prod_date} &nbsp;·&nbsp; {generated}<br>
   Articles sourced from Google News RSS · Top {MAX_PER_COUNTRY} per country ranked by estimated reach<br>
   Excerpts reproduced verbatim from publisher pages where accessible<br><br>
   This roundup is produced automatically through a news scraper. Kindly click each article
-  title to read the full piece on the original publisher's site. Content has not been
+  title to read the full piece on the original publisher's site. Content has not always been
   editorially reviewed.<br><br>
   Tags applied where terms appear in article titles or extracted text:
   <strong>Youth · Women · Disabilities · Refugees · IW</strong>
@@ -675,7 +693,7 @@ index_html = f"""<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Weekly Education Landscape Digest</title>
+<title>Education News Roundup</title>
 <style>
 *, *::before, *::after {{ box-sizing: border-box; margin: 0; padding: 0; }}
 :root {{ --paper: #f5f2eb; --ink: #1a1a18; --ink-3: #7a7a72; --accent: #1c3d5c; --rule: #ccc9be; }}
@@ -702,7 +720,7 @@ li a:hover {{ color: var(--ink); }}
 <body>
 <div class="masthead">
   <p class="eyebrow">Archive</p>
-  <h1>Weekly Education Landscape Digest:<br>Scale &amp; Pilot Countries</h1>
+  <h1>Education News Roundup</h1>
   <p class="dateline">All issues</p>
 </div>
 <div class="container">
@@ -713,7 +731,7 @@ li a:hover {{ color: var(--ink); }}
 </div>
 <div class="footer">
   Produced automatically each week from Google News RSS.<br>
-  Content has not been editorially reviewed.
+  Content has not always been editorially reviewed.
 </div>
 </body>
 </html>"""

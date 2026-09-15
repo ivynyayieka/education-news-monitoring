@@ -1,8 +1,9 @@
-# Weekly Education Landscape Digest
+# Education News Roundup
 
 Automated weekly news digest covering the education landscape across Scale Portfolio and Pilot Site countries. Runs every Monday; can also be triggered manually.
 
-**Live site:** 
+**Live site:** not yet published — see "Publishing the report" below to enable GitHub Pages once you're ready.
+
 ---
 
 ## What it does
@@ -41,11 +42,13 @@ Files are named by the calendar week (the Monday that week started), not by the 
 
 ## Countries covered
 
-### Scale Portfolio
+### Scale Portfolio (national government-scale programs)
 Malawi (BEFIT) · Sierra Leone (Pikin Tab) · Tanzania (MsingiTek)
 
 ### Pilot Sites
 Burkina Faso · Ghana · Liberia
+
+Burkina Faso is Francophone, so its searches also run a French-language equivalent of each general theme (e.g. "budget de l'éducation" alongside "education budget") — otherwise French-language press coverage of Burkina Faso would be almost entirely invisible to the digest.
 
 ---
 
@@ -97,6 +100,23 @@ Articles are tagged automatically if their title contains: `youth`, `women`, `di
 
 ### Themes with no results
 If a theme turns up nothing for a country in a given week, it's simply omitted from that country's section — there's no "no results" placeholder shown per theme. A country is only skipped entirely if every theme came back empty for it. A whole section (Scale Portfolio or Pilot Sites) only shows a fallback message if every country in it had nothing at all.
+
+### Manual review — editing the generated HTML by hand
+The raw output is expected to need a quick human pass most weeks (mismatched or irrelevant articles happen — see "Coverage may be thin" below). To make that easy, every article in `education-digest-<date>.html` is wrapped in comment markers:
+```html
+<!-- ══════ ARTICLE: <headline> — delete this whole block down to "END ARTICLE" to remove it ══════ -->
+<article class="card">
+  ...
+</article>
+<!-- ══════ END ARTICLE ══════ -->
+```
+To remove an article, delete everything from the `ARTICLE:` line down through the matching `END ARTICLE` line. Where no excerpt could be extracted, there's a second marker right at that spot showing exactly where to paste one in:
+```html
+<!-- NO EXCERPT — to add one, replace the <p class="read-link"> line below with:
+     <div class="excerpt"><p>First paragraph…</p><p>Second paragraph… (optional)</p></div> -->
+<p class="read-link"><a href="...">Read article</a></p>
+```
+**Important**: editing the generated HTML file directly only affects that one week's file — the *next* scheduled run regenerates and overwrites it from scratch. Manual edits don't persist automatically; if a change should apply every week going forward (wording, title, styling), that belongs in `education_export.py` instead.
 
 ---
 
