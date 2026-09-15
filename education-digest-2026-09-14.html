@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weekly Education Landscape Digest — Monday 14 September 2026</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --paper:      #f5f2eb;
+  --ink:        #1a1a18;
+  --ink-2:      #3d3d38;
+  --ink-3:      #7a7a72;
+  --rule:       #ccc9be;
+  --rule-heavy: #1a1a18;
+  --accent:     #1c3d5c;
+  --serif:      "Georgia", "Times New Roman", serif;
+  --sans:       "Helvetica Neue", "Arial", sans-serif;
+  --sidebar-w:  180px;
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: var(--serif); background: var(--paper); color: var(--ink); line-height: 1.7; }
+
+.masthead {
+  border-bottom: 3px double var(--rule-heavy);
+  padding: 36px 24px 20px;
+  text-align: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.masthead-eyebrow {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 10px;
+}
+.masthead h1 {
+  font-family: var(--serif);
+  font-size: clamp(26px, 4vw, 46px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+.masthead-dateline {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 7px 0;
+  margin-top: 14px;
+}
+
+.page-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  padding: 0 0 80px;
+}
+
+.sidebar {
+  width: var(--sidebar-w);
+  flex-shrink: 0;
+  border-right: 1px solid var(--rule);
+  position: sticky;
+  top: 0;
+  max-height: 100vh;
+  overflow-y: auto;
+  padding: 28px 0;
+}
+.sidebar-inner { padding: 0 16px; }
+.nav-section-label {
+  font-family: var(--sans);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 5px;
+  margin: 20px 0 8px;
+}
+.nav-section-label:first-child { margin-top: 0; }
+.nav-link {
+  display: block;
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--accent);
+  text-decoration: none;
+  padding: 3px 0;
+  line-height: 1.4;
+}
+.nav-link:hover { text-decoration: underline; }
+
+.content {
+  flex: 1;
+  min-width: 0;
+  padding: 28px 32px;
+}
+
+.geo-section { margin-bottom: 60px; }
+.section-rule {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 32px;
+  margin-top: 52px;
+}
+.geo-section:first-child .section-rule { margin-top: 0; }
+.section-rule::before {
+  content: '';
+  flex: 0 0 32px;
+  height: 3px;
+  background: var(--rule-heavy);
+}
+.section-rule::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+.section-label {
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.entity-block { margin-bottom: 44px; }
+.entity-hed {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 8px;
+  margin-bottom: 18px;
+  letter-spacing: -0.01em;
+}
+
+.card {
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--rule);
+}
+.card:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.card-hed {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 5px;
+}
+.card-hed a { color: var(--ink); text-decoration: none; }
+.card-hed a:hover { color: var(--accent); text-decoration: underline; }
+.card-meta {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--ink-3);
+  letter-spacing: 0.03em;
+  margin-bottom: 10px;
+}
+.excerpt {
+  font-family: var(--serif);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+.excerpt p { margin-bottom: 8px; }
+.excerpt p:last-child { margin: 0; }
+.read-link {
+  font-family: var(--sans);
+  font-size: 12px;
+  margin-top: 6px;
+}
+.read-link a { color: var(--accent); text-decoration: underline; }
+
+.tags { margin-bottom: 8px; }
+.tag {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border: 1px solid currentColor;
+  border-radius: 2px;
+  margin-right: 5px;
+  line-height: 1.6;
+}
+
+.footer {
+  border-top: 3px double var(--rule);
+  padding: 32px 24px;
+  text-align: center;
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--ink-3);
+  line-height: 1.8;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.footer strong { color: var(--ink-2); }
+
+@media (max-width: 700px) {
+  .page-wrap { flex-direction: column; }
+  .sidebar {
+    width: 100%;
+    position: static;
+    max-height: none;
+    border-right: none;
+    border-bottom: 1px solid var(--rule);
+    padding: 16px 0;
+    overflow-y: visible;
+  }
+  .sidebar-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 12px;
+    padding: 0 16px;
+  }
+  .nav-section-label { width: 100%; margin: 10px 0 4px; }
+  .content { padding: 20px 16px; }
+}
+
+.empty { font-family: var(--sans); font-size: 13px; color: var(--ink-3); font-style: italic; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <p class="masthead-eyebrow">Weekly Education Landscape Digest</p>
+  <h1>Education Landscape<br>Scale &amp; Pilot Countries</h1>
+  <p class="masthead-dateline">Monday 14 September 2026</p>
+</header>
+
+<div class="page-wrap">
+
+  <nav class="sidebar">
+<div class="sidebar-inner">
+<p class="nav-section-label">Scale Portfolio</p>
+<a class="nav-link" href="#Malawi">Malawi</a>
+<a class="nav-link" href="#Sierra_Leone">Sierra Leone</a>
+<a class="nav-link" href="#Tanzania">Tanzania</a>
+<p class="nav-section-label">Pilot Sites</p>
+<a class="nav-link" href="#Burkina_Faso">Burkina Faso</a>
+<a class="nav-link" href="#Ghana">Ghana</a>
+<a class="nav-link" href="#Liberia">Liberia</a>
+</div>
+</nav>
+
+
+  <main class="content">
+    <section class="geo-section" id="scale">
+<div class="section-rule"><span class="section-label">Scale Portfolio Countries</span></div>
+<div class="entity-block" id="Malawi">
+<h3 class="entity-hed">Malawi</h3>
+<div class="pillar-block">
+<div class="pillar-label">Policy, Budget &amp; Funding</div>
+<article class="card">
+<h4 class="card-hed"><a href="https://www.koreatimes.co.kr/economy/others/20260915/data-ministry-explores-ai-friendly-global-data-standards-with-oecd-adb" target="_blank" rel="noopener">UNESCO Korea holds workshop for 9 countries under education aid program</a></h4>
+<p class="card-meta">The Korea Times · 15 Sep 2026</p>
+<div class="excerpt"><p>Korea is stepping up efforts to make official statistics and other public data more accessible to artificial intelligence (AI) and explore AI-friendly global data standards to develop data that AI can more accurately understand and use, the Ministry of Data and Statistics said Tuesday.</p><p>Toward that end, in collaboration with the OECD and the Asian Development Bank (ADB), the ministry opened a three-day workshop in Seoul, Tuesday, bringing together more than 80 data experts from statistical agencies and central banks in 25 countries.</p><p>A key focus is Statistical Data and Metadata eXchange (SDMx), an international standard that enables statistics and related information to be exchanged across different systems.</p></div>
+</article>
+<article class="card">
+<h4 class="card-hed"><a href="https://news.google.com/rss/articles/CBMigwFBVV95cUxQc2tnS05fTGY2bV84WG9SdHlaRHozZ2pvRC1zcWMtSkthaGFnMUNRenBXUnZwS0lOOVZ5REtRMGV0NW45U1JyMHQ1LTJ2TFpkRWdfakRaTERWNTJHenRYV1ZDV0lQald2U2RObW9MdzFDU0R2Q1JRSkVoMUZxaWNpVV9tWQ?oc=5" target="_blank" rel="noopener">Malawi exam results move online</a></h4>
+<p class="card-meta">ITWeb Africa · 9 Sep 2026</p>
+<p class="read-link"><a href="https://news.google.com/rss/articles/CBMigwFBVV95cUxQc2tnS05fTGY2bV84WG9SdHlaRHozZ2pvRC1zcWMtSkthaGFnMUNRenBXUnZwS0lOOVZ5REtRMGV0NW45U1JyMHQ1LTJ2TFpkRWdfakRaTERWNTJHenRYV1ZDV0lQald2U2RObW9MdzFDU0R2Q1JRSkVoMUZxaWNpVV9tWQ?oc=5" target="_blank" rel="noopener">Read article</a></p>
+</article>
+</div>
+<div class="pillar-block">
+<div class="pillar-label">Technology &amp; Innovation in Education</div>
+<article class="card">
+<h4 class="card-hed"><a href="https://www.straitstimes.com/global" target="_blank" rel="noopener">Gates Foundation to spend $1.27 billion to expand AI access to poor, remote communities</a></h4>
+<p class="card-meta">The Straits Times · 15 Sep 2026</p>
+<div class="excerpt"><p>Trump is unlikely to heed calls for intervention if that means the US slows down while China does not.</p><p>The US market is exciting, but it can also be dangerous for young investors.</p></div>
+</article>
+</div>
+</div>
+<div class="entity-block" id="Sierra_Leone">
+<h3 class="entity-hed">Sierra Leone</h3>
+<div class="pillar-block">
+<div class="pillar-label">Policy, Budget &amp; Funding</div>
+<article class="card">
+<div class="tags"><span class="tag" style="border-color:#4a2060;color:#4a2060">Women</span></div><h4 class="card-hed"><a href="https://www.thesierraleonetelegraph.com/one-dollar-a-week-in-the-central-african-republic-women-are-growing-their-projects-and-their-hopes/" target="_blank" rel="noopener">One Dollar a week – In the Central African Republic, women are growing their projects and their hopes</a></h4>
+<p class="card-meta">thesierraleonetelegraph.com · 10 Sep 2026</p>
+<p class="read-link"><a href="https://www.thesierraleonetelegraph.com/one-dollar-a-week-in-the-central-african-republic-women-are-growing-their-projects-and-their-hopes/" target="_blank" rel="noopener">Read article</a></p>
+</article>
+<article class="card">
+<h4 class="card-hed"><a href="https://www2.fundsforngos.org/individuals/apply-now-for-taranaki-foundation-annual-funding-new-zealand/" target="_blank" rel="noopener">Apply now for Taranaki Foundation Annual Funding (New Zealand)</a></h4>
+<p class="card-meta">fundsforNGOs · 13 Sep 2026</p>
+<p class="read-link"><a href="https://www2.fundsforngos.org/individuals/apply-now-for-taranaki-foundation-annual-funding-new-zealand/" target="_blank" rel="noopener">Read article</a></p>
+</article>
+</div>
+<div class="pillar-block">
+<div class="pillar-label">Learning Outcomes &amp; Assessment</div>
+<article class="card">
+<h4 class="card-hed"><a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxPTUlNWkxtSm1GazI1S0xaa01lRUhkSGpNMXBpWE95blF0ejdQZFdxenRHODdjbkpHdWF0OXpqUENrRzFST3ZLUWxCRnFvQXlTNElYdVBhVFR1MjN2MEEtRVJxT3loODZOdUpyUXo3c3dhR0tRZGdKbnJHZW4ySFBiYm5OdWZJVUU2SlE3N21wblhZTkd6WXBuZmhtVkZRYURRVEdVYXgwUmp4d3du?oc=5" target="_blank" rel="noopener">Back to School, Back to Learning: Building Strong Foundations for Every Child.</a></h4>
+<p class="card-meta">UNICEF · 14 Sep 2026</p>
+<p class="read-link"><a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxPTUlNWkxtSm1GazI1S0xaa01lRUhkSGpNMXBpWE95blF0ejdQZFdxenRHODdjbkpHdWF0OXpqUENrRzFST3ZLUWxCRnFvQXlTNElYdVBhVFR1MjN2MEEtRVJxT3loODZOdUpyUXo3c3dhR0tRZGdKbnJHZW4ySFBiYm5OdWZJVUU2SlE3N21wblhZTkd6WXBuZmhtVkZRYURRVEdVYXgwUmp4d3du?oc=5" target="_blank" rel="noopener">Read article</a></p>
+</article>
+</div>
+</div>
+<div class="entity-block" id="Tanzania">
+<h3 class="entity-hed">Tanzania</h3>
+<div class="pillar-block">
+<div class="pillar-label">Policy, Budget &amp; Funding</div>
+<article class="card">
+<h4 class="card-hed"><a href="https://www.thecitizen.co.tz/samia-scholarship-innovations-eye-practical-use/" target="_blank" rel="noopener">Samia Scholarship innovations eye practical use</a></h4>
+<p class="card-meta">thecitizen.co.tz · 15 Sep 2026</p>
+<p class="read-link"><a href="https://www.thecitizen.co.tz/samia-scholarship-innovations-eye-practical-use/" target="_blank" rel="noopener">Read article</a></p>
+</article>
+<article class="card">
+<h4 class="card-hed"><a href="https://www.koreatimes.co.kr/economy/others/20260915/data-ministry-explores-ai-friendly-global-data-standards-with-oecd-adb" target="_blank" rel="noopener">UNESCO Korea holds workshop for 9 countries under education aid program</a></h4>
+<p class="card-meta">The Korea Times · 15 Sep 2026</p>
+<div class="excerpt"><p>Korea is stepping up efforts to make official statistics and other public data more accessible to artificial intelligence (AI) and explore AI-friendly global data standards to develop data that AI can more accurately understand and use, the Ministry of Data and Statistics said Tuesday.</p><p>Toward that end, in collaboration with the OECD and the Asian Development Bank (ADB), the ministry opened a three-day workshop in Seoul, Tuesday, bringing together more than 80 data experts from statistical agencies and central banks in 25 countries.</p><p>A key focus is Statistical Data and Metadata eXchange (SDMx), an international standard that enables statistics and related information to be exchanged across different systems.</p></div>
+</article>
+</div>
+<div class="pillar-block">
+<div class="pillar-label">Learning Outcomes &amp; Assessment</div>
+<article class="card">
+<h4 class="card-hed"><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxPZnpENEszbkRfUUxTVEFYaUNyLVZiOFg5NVpzS25qNkt6ak1RTnhWSVNqX3lPRnJfREk4MV9zT0NWNlIxX3pqN0QtcnhLcW9yWXItOXM3WkxhX2RsbXlQRnZ3M2VBMkdvckVuT3JjYkhMUUFscnJDZENZU0tpMWNzN1Vqd2NxTnVYQm1qd3E4MktPUQ?oc=5" target="_blank" rel="noopener">Vodacom Trains More Than 400,000 Young People in Digital Skills Since 2024</a></h4>
+<p class="card-meta">techafricanews.com · 8 Sep 2026</p>
+<p class="read-link"><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxPZnpENEszbkRfUUxTVEFYaUNyLVZiOFg5NVpzS25qNkt6ak1RTnhWSVNqX3lPRnJfREk4MV9zT0NWNlIxX3pqN0QtcnhLcW9yWXItOXM3WkxhX2RsbXlQRnZ3M2VBMkdvckVuT3JjYkhMUUFscnJDZENZU0tpMWNzN1Vqd2NxTnVYQm1qd3E4MktPUQ?oc=5" target="_blank" rel="noopener">Read article</a></p>
+</article>
+</div>
+</div>
+</section>
+
+    <section class="geo-section" id="pilot">
+<div class="section-rule"><span class="section-label">Pilot Sites</span></div>
+<div class="entity-block" id="Burkina_Faso">
+<h3 class="entity-hed">Burkina Faso</h3>
+<div class="pillar-block">
+<div class="pillar-label">Policy, Budget &amp; Funding</div>
+<article class="card">
+<h4 class="card-hed"><a href="https://www.savethechildren.net/what-we-do/emergencies/ebola-outbreak" target="_blank" rel="noopener">African Governments Must Commit to Get Children Back to School!</a></h4>
+<p class="card-meta">Save the Children · 15 Jun 2021</p>
+<div class="excerpt"><p>Health authorities have reported over 5,000 confirmed Ebola cases and over 2,000 deaths. The numbers are rapidly increasing and the true number is likely to be even higher than those officially recorded given ongoing challenges with tracing and testing. It is now the largest Ebola outbreak ever reported in DRC , and the second largest globally.</p><p>The World Health Organisation has warned that this outbreak is on track to be the deadliest on record if it continues at its current pace.</p><p>This outbreak is spreading through communities in the DRC where families are already facing conflict and displacement and healthcare is severely limited , making it harder to trace contacts and contain transmission.</p></div>
+</article>
+<article class="card">
+<h4 class="card-hed"><a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxNeWFCdzFSbjNKM1RKNzBCWGpXU0xBbHNWMGVHcmFZU053QzBMV1ZBTVg5WnFvT092bERNTi1yanRJMTJURWZSdUhtNUpITVNtcXg2NTFsQ2dHaHltdmhLVl9kd3ZTeXJQejVuLUhqckRKUVM2ZVQ5bXlRZ1VpVm5JUHV6cGx4THBHTF8xTW1wNHpocEZWNElRR2JjRlZFcmdSbDNlbUxiN2sySDJBU2pUN2xxRnRXRWdsYVlic2FuelNTc00?oc=5" target="_blank" rel="noopener">UNICEF appeals for US$9.9 billion in humanitarian funding to support children affected by conflict and crisis in increasingly volatile world</a></h4>
+<p class="card-meta">Unicef · 5 Dec 2024</p>
+<p class="read-link"><a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxNeWFCdzFSbjNKM1RKNzBCWGpXU0xBbHNWMGVHcmFZU053QzBMV1ZBTVg5WnFvT092bERNTi1yanRJMTJURWZSdUhtNUpITVNtcXg2NTFsQ2dHaHltdmhLVl9kd3ZTeXJQejVuLUhqckRKUVM2ZVQ5bXlRZ1VpVm5JUHV6cGx4THBHTF8xTW1wNHpocEZWNElRR2JjRlZFcmdSbDNlbUxiN2sySDJBU2pUN2xxRnRXRWdsYVlic2FuelNTc00?oc=5" target="_blank" rel="noopener">Read article</a></p>
+</article>
+<article class="card">
+<h4 class="card-hed"><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxOeUd1Um9RMmIwdTZWcTVrbkR3cjU1WHpKUlI4VkhyeVZKTk9VU3A2T3ZkRVNzWklPOW5ITjZ4V21fcUFpY3JXd2ZKaFUwLUVtc1RRTkx5UFgxcE5DdHFSQ0RUYzlpa2o2dGZ1REJfbjZoVm5XeFp3ZVQxbWN6ejZTby00WVhlYm5HQ2NwZTN3Q0toSW1vNldfODlUTmlEQWg1Rk03UUNEZnVRazh5VlA1dzE3eGI?oc=5" target="_blank" rel="noopener">Somalia Girls Education</a></h4>
+<p class="card-meta">chronicleonline.com · 9 Sep 2026</p>
+<p class="read-link"><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxOeUd1Um9RMmIwdTZWcTVrbkR3cjU1WHpKUlI4VkhyeVZKTk9VU3A2T3ZkRVNzWklPOW5ITjZ4V21fcUFpY3JXd2ZKaFUwLUVtc1RRTkx5UFgxcE5DdHFSQ0RUYzlpa2o2dGZ1REJfbjZoVm5XeFp3ZVQxbWN6ejZTby00WVhlYm5HQ2NwZTN3Q0toSW1vNldfODlUTmlEQWg1Rk03UUNEZnVRazh5VlA1dzE3eGI?oc=5" target="_blank" rel="noopener">Read article</a></p>
+</article>
+</div>
+</div>
+<div class="entity-block" id="Ghana">
+<h3 class="entity-hed">Ghana</h3>
+<div class="pillar-block">
+<div class="pillar-label">Policy, Budget &amp; Funding</div>
+<article class="card">
+<h4 class="card-hed"><a href="https://www.modernghana.com/from-free-and-compulsory-education-to-compulsory-extra-classes-the-ministry-must-act/" target="_blank" rel="noopener">From Free and Compulsory Education to compulsory Extra Classes: The Ministry must act</a></h4>
+<p class="card-meta">Modern Ghana · 15 Sep 2026</p>
+<p class="read-link"><a href="https://www.modernghana.com/from-free-and-compulsory-education-to-compulsory-extra-classes-the-ministry-must-act/" target="_blank" rel="noopener">Read article</a></p>
+</article>
+</div>
+<div class="pillar-block">
+<div class="pillar-label">Learning Outcomes &amp; Assessment</div>
+<article class="card">
+<h4 class="card-hed"><a href="https://www.modernghana.com/best-assurance-partners-getfund-to-boost-education-with-ghs100000/" target="_blank" rel="noopener">Best Assurance partners GETFund to boost education with GHS100,000</a></h4>
+<p class="card-meta">Modern Ghana · 10 Sep 2026</p>
+<p class="read-link"><a href="https://www.modernghana.com/best-assurance-partners-getfund-to-boost-education-with-ghs100000/" target="_blank" rel="noopener">Read article</a></p>
+</article>
+</div>
+<div class="pillar-block">
+<div class="pillar-label">Technology &amp; Innovation in Education</div>
+<article class="card">
+<h4 class="card-hed"><a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE5UazZFakVIbWVuZC1XNmljOWR1VnlBNDdOX3Bmd1BxTWhSRXRFODFlYXNxRnhlSU9ETU1NTGF2QmtESUR3MFN0RnJVd2hNbVk1b0Y0QWN0blFQZ0sxcUhQcjZqTWJXX19HMGFsRXdsNzZQTDhfWEh5YnlrbnI?oc=5" target="_blank" rel="noopener">Beyond digital as usual</a></h4>
+<p class="card-meta">Unicef · 9 Sep 2026</p>
+<p class="read-link"><a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE5UazZFakVIbWVuZC1XNmljOWR1VnlBNDdOX3Bmd1BxTWhSRXRFODFlYXNxRnhlSU9ETU1NTGF2QmtESUR3MFN0RnJVd2hNbVk1b0Y0QWN0blFQZ0sxcUhQcjZqTWJXX19HMGFsRXdsNzZQTDhfWEh5YnlrbnI?oc=5" target="_blank" rel="noopener">Read article</a></p>
+</article>
+</div>
+</div>
+<div class="entity-block" id="Liberia">
+<h3 class="entity-hed">Liberia</h3>
+<div class="pillar-block">
+<div class="pillar-label">Policy, Budget &amp; Funding</div>
+<article class="card">
+<h4 class="card-hed"><a href="https://africa24tv.com/liberia-president-boakai-reaffirms-national-commitment-to-return-250000-children-to-the-classroom/" target="_blank" rel="noopener">Liberia: President Boakai Reaffirms National Commitment to Return 250,000 Children to the Classroom</a></h4>
+<p class="card-meta">Africa24 TV · 12 Sep 2026</p>
+<p class="read-link"><a href="https://africa24tv.com/liberia-president-boakai-reaffirms-national-commitment-to-return-250000-children-to-the-classroom/" target="_blank" rel="noopener">Read article</a></p>
+</article>
+</div>
+<div class="pillar-block">
+<div class="pillar-label">Learning Outcomes &amp; Assessment</div>
+<article class="card">
+<h4 class="card-hed"><a href="https://news.google.com/rss/articles/CBMi4gFBVV95cUxQczJRUENQYkJJa3MxQy1FNm5WU3g0NDdWQkZqdEFKbHdfSFgtbmtOVE5NWnI4cE5yRTdrT3N1UnRCMy15T2Rhd19IMGFxRDRHR1hlZU9kWFRRbW1tdml3TFBUT2Z6ZzRnUjczajhsLVVVN29WUy1YZEl1b0k3bWV1Q2lOTTQ5QVNLSDJxZl81bmZrNlFDRkJxbTVLZUI1alhORTNZM3J0MGw2djN1dk04aXVfR3kzRHJYS2hwNHlIOVFOdnNVNkkxR3NtbnNEaFF2dy1Nd044NDdTZExJdUk4dDhR?oc=5" target="_blank" rel="noopener">Liberia: MCSS Teachers Boycott Threat Disrupts New School Year</a></h4>
+<p class="card-meta">Wansom AI · 9 Sep 2026</p>
+<p class="read-link"><a href="https://news.google.com/rss/articles/CBMi4gFBVV95cUxQczJRUENQYkJJa3MxQy1FNm5WU3g0NDdWQkZqdEFKbHdfSFgtbmtOVE5NWnI4cE5yRTdrT3N1UnRCMy15T2Rhd19IMGFxRDRHR1hlZU9kWFRRbW1tdml3TFBUT2Z6ZzRnUjczajhsLVVVN29WUy1YZEl1b0k3bWV1Q2lOTTQ5QVNLSDJxZl81bmZrNlFDRkJxbTVLZUI1alhORTNZM3J0MGw2djN1dk04aXVfR3kzRHJYS2hwNHlIOVFOdnNVNkkxR3NtbnNEaFF2dy1Nd044NDdTZExJdUk4dDhR?oc=5" target="_blank" rel="noopener">Read article</a></p>
+</article>
+</div>
+<div class="pillar-block">
+<div class="pillar-label">Technology &amp; Innovation in Education</div>
+<article class="card">
+<h4 class="card-hed"><a href="https://news.google.com/rss/articles/CBMi2gFBVV95cUxOQ2lBRXJmZTluMWVLbHB2NEhCeEJ2R2RjbGhnbXRDTHZjc2Y4RFRxSktncW5wdFN0U3VESTB4UU1mUEpDcFBxNW15WU9PM1NrTkJUQllsZWRiMU9WR1pFTVY1UGE4bEh4al9vem1GNDZDcXZCeGw3Yi1kSGNETzNJS3J3U2YtbHRjdGc4Nlk0VDBNR1UxdC1pVnl1WDFzQS1jWk1jZ29sYTgtaEFULXhXdXJaOEJ1WmlUQXBWMjlReUtJRjFyTmxHSlBhSTF1SjBDeXhYcXY5cy1fZw?oc=5" target="_blank" rel="noopener">Liberia India Agricultural Cooperation MoU: Signed to Boost Food Security</a></h4>
+<p class="card-meta">Wansom AI · 9 Sep 2026</p>
+<p class="read-link"><a href="https://news.google.com/rss/articles/CBMi2gFBVV95cUxOQ2lBRXJmZTluMWVLbHB2NEhCeEJ2R2RjbGhnbXRDTHZjc2Y4RFRxSktncW5wdFN0U3VESTB4UU1mUEpDcFBxNW15WU9PM1NrTkJUQllsZWRiMU9WR1pFTVY1UGE4bEh4al9vem1GNDZDcXZCeGw3Yi1kSGNETzNJS3J3U2YtbHRjdGc4Nlk0VDBNR1UxdC1pVnl1WDFzQS1jWk1jZ29sYTgtaEFULXhXdXJaOEJ1WmlUQXBWMjlReUtJRjFyTmxHSlBhSTF1SjBDeXhYcXY5cy1fZw?oc=5" target="_blank" rel="noopener">Read article</a></p>
+</article>
+</div>
+</div>
+</section>
+
+  </main>
+
+</div>
+
+<footer class="footer">
+  <strong>Weekly Education Landscape Digest: Scale &amp; Pilot Countries</strong><br>
+  Monday 14 September 2026 &nbsp;·&nbsp; Tue, 15 Sep 2026 15:29 UTC<br>
+  Articles sourced from Google News RSS · Top 3 per country ranked by estimated reach<br>
+  Excerpts reproduced verbatim from publisher pages where accessible<br><br>
+  This roundup is produced automatically through a news scraper. Kindly click each article
+  title to read the full piece on the original publisher's site. Content has not been
+  editorially reviewed.<br><br>
+  Tags applied where terms appear in article titles or extracted text:
+  <strong>Youth · Women · Disabilities · Refugees · IW</strong>
+</footer>
+
+</body>
+</html>
