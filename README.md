@@ -1,7 +1,7 @@
-# Weekly Education Landscape Digest — Imagine Worldwide
+# Weekly Education Landscape Digest
 
 Scans Google News RSS weekly for education-landscape coverage across
-Imagine Worldwide's Scale Portfolio countries (Malawi, Sierra Leone,
+Organization's Scale Portfolio countries (Malawi, Sierra Leone,
 Tanzania) and Pilot Sites (Burkina Faso, Ghana, Liberia), and produces a
 readable HTML report plus a full CSV data export.
 
