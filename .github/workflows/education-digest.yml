@@ -1,5 +1,5 @@
 # education-digest.yml
-# GitHub Actions workflow — runs the Imagine Worldwide education digest pipeline automatically.
+# GitHub Actions workflow — runs the education digest pipeline automatically.
 # Place this file at: .github/workflows/education-digest.yml
 # in your new repo (a ".github/workflows/" folder, at the repo root).
 #
