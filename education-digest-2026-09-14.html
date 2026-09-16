@@ -3,439 +3,192 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Weekly Education Landscape Digest — Monday 14 September 2026</title>
+<title>Education News Roundup — Monday 14 September 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Oswald:wght@500;600;700&family=PT+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --paper:      #f5f2eb;
-  --ink:        #1a1a18;
-  --ink-2:      #3d3d38;
-  --ink-3:      #7a7a72;
-  --rule:       #ccc9be;
-  --rule-heavy: #1a1a18;
-  --accent:     #1c3d5c;
-  --serif:      "Georgia", "Times New Roman", serif;
-  --sans:       "Helvetica Neue", "Arial", sans-serif;
-  --sidebar-w:  180px;
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; border-radius: 0 !important; box-shadow: none !important; }
+:root { --page-bg: #d9d4c2; --ink: #0d0d0a; --ink-3: #4a463c; color-scheme: light; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --page-bg: #15140f; --ink: #ece8de; --ink-3: #b0ab99; }
+}
+:root[data-theme="dark"] { --page-bg: #15140f; --ink: #ece8de; --ink-3: #b0ab99; }
+
+body { background: var(--page-bg); font-family: 'PT Serif', Georgia, serif; padding: 24px 12px 80px; }
+.np {
+  max-width: 980px; margin: 0 auto; color: var(--ink);
+  background: #f0ecdf;
+  background-image: radial-gradient(rgba(0,0,0,0.05) 0.6px, transparent 0.6px);
+  background-size: 2.4px 2.4px;
+  border: 1px solid var(--ink);
+}
+.np-topline { display: flex; justify-content: space-between; align-items: baseline; font-family: 'Oswald', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); padding: 8px 20px 0; border-bottom: 1px solid var(--ink-3); }
+.np-masthead { padding: 4px 20px 0; }
+.np-h1 { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 64px; line-height: 0.92; letter-spacing: -0.02em; text-transform: uppercase; margin: 6px 0 2px; }
+.np-rule-heavy { height: 7px; background: var(--ink); margin: 4px 0 0; }
+.np-rule-thin { height: 1px; background: var(--ink); margin: 2px 0 0; }
+.np-dateline { font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-3); padding: 6px 20px 8px; border-bottom: 3px solid var(--ink); text-align: center; }
+.np-body { padding: 0 20px 24px; }
+.np-country { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 34px; text-transform: uppercase; letter-spacing: -0.01em; line-height: 1; border-bottom: 3px solid var(--ink); padding: 10px 0 6px; margin-bottom: 12px; break-after: avoid; break-inside: avoid; }
+.np-columns { columns: 2; column-gap: 20px; column-rule: 1px solid var(--ink); }
+.np-card { break-inside: avoid; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid #a89f88; }
+.np-kicker { font-family: 'Oswald', sans-serif; font-size: 9.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 2px; }
+.np-hed { font-family: 'PT Serif', Georgia, serif; font-size: 17.5px; font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 3px; }
+.np-hed a { color: var(--ink); text-decoration: none; }
+.np-byline { font-family: 'Oswald', sans-serif; font-size: 9.5px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 5px; }
+.np-excerpt { font-family: 'PT Serif', Georgia, serif; font-size: 12.5px; line-height: 1.42; text-align: justify; hyphens: auto; color: #1c1a14; }
+.np-excerpt p { margin-bottom: 4px; }
+.np-emblem { display: block; margin: 0 auto 4px; }
+.np-photo-slot { width: 100%; aspect-ratio: 16/10; margin-bottom: 8px; position: relative; overflow: hidden; background: #e4dfcd; border: 1.5px solid var(--ink); display: flex; align-items: center; justify-content: center; }
+.np-photo-slot svg { width: 82%; height: 82%; }
+.np-photo-slot::after { content: ''; position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(circle, var(--ink) 0.6px, transparent 0.6px); background-size: 3.2px 3.2px; opacity: 0.28; mix-blend-mode: multiply; }
+.np-card--media { display: grid; grid-template-columns: 260px 1fr; column-gap: 22px; align-items: start; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid #a89f88; break-inside: avoid; }
+.np-card-media .np-photo-slot { margin-bottom: 0; }
+.np-footer { font-family: 'Oswald', sans-serif; font-size: 10.5px; color: var(--ink-3); text-align: center; padding: 22px 20px; border-top: 3px double var(--ink); line-height: 1.9; }
+.np-footer strong { color: var(--ink); font-family: 'Playfair Display', serif; font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em; }
+@media (max-width: 620px) {
+  .np-columns { columns: 1; }
+  .np-card--media { grid-template-columns: 1fr; }
+  .np-h1 { font-size: 38px; }
 }
 
-html { scroll-behavior: smooth; font-size: 16px; }
-body { font-family: var(--serif); background: var(--paper); color: var(--ink); line-height: 1.7; }
-
-.masthead {
-  border-bottom: 3px double var(--rule-heavy);
-  padding: 36px 24px 20px;
-  text-align: center;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-.masthead-eyebrow {
-  font-family: var(--sans);
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-  margin-bottom: 10px;
-}
-.masthead h1 {
-  font-family: var(--serif);
-  font-size: clamp(26px, 4vw, 46px);
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-  margin-bottom: 10px;
-}
-.masthead-dateline {
-  font-family: var(--sans);
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-  padding: 7px 0;
-  margin-top: 14px;
-}
-
-.page-wrap {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  align-items: flex-start;
-  padding: 0 0 80px;
-}
-
-.sidebar {
-  width: var(--sidebar-w);
-  flex-shrink: 0;
-  border-right: 1px solid var(--rule);
-  position: sticky;
-  top: 0;
-  max-height: 100vh;
-  overflow-y: auto;
-  padding: 28px 0;
-}
-.sidebar-inner { padding: 0 16px; }
-.nav-section-label {
-  font-family: var(--sans);
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-  border-bottom: 1px solid var(--rule);
-  padding-bottom: 5px;
-  margin: 20px 0 8px;
-}
-.nav-section-label:first-child { margin-top: 0; }
-.nav-link {
-  display: block;
-  font-family: var(--sans);
-  font-size: 12px;
-  color: var(--accent);
-  text-decoration: none;
-  padding: 3px 0;
-  line-height: 1.4;
-}
-.nav-link:hover { text-decoration: underline; }
-
-.content {
-  flex: 1;
-  min-width: 0;
-  padding: 28px 32px;
-}
-
-.geo-section { margin-bottom: 60px; }
-.section-rule {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 32px;
-  margin-top: 52px;
-}
-.geo-section:first-child .section-rule { margin-top: 0; }
-.section-rule::before {
-  content: '';
-  flex: 0 0 32px;
-  height: 3px;
-  background: var(--rule-heavy);
-}
-.section-rule::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--rule);
-}
-.section-label {
-  font-family: var(--sans);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--ink);
-  white-space: nowrap;
-}
-
-.entity-block { margin-bottom: 44px; }
-.entity-hed {
-  font-family: var(--serif);
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--accent);
-  border-bottom: 1px solid var(--rule);
-  padding-bottom: 8px;
-  margin-bottom: 18px;
-  letter-spacing: -0.01em;
-}
-
-.card {
-  margin-bottom: 24px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid var(--rule);
-}
-.card:last-child {
-  border-bottom: none;
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
-.card-hed {
-  font-family: var(--serif);
-  font-size: 17px;
-  font-weight: 700;
-  line-height: 1.35;
-  margin-bottom: 5px;
-}
-.card-hed a { color: var(--ink); text-decoration: none; }
-.card-hed a:hover { color: var(--accent); text-decoration: underline; }
-.card-meta {
-  font-family: var(--sans);
-  font-size: 11px;
-  color: var(--ink-3);
-  letter-spacing: 0.03em;
-  margin-bottom: 10px;
-}
-.excerpt {
-  font-family: var(--serif);
-  font-size: 14px;
-  line-height: 1.7;
-  color: var(--ink-2);
-}
-.excerpt p { margin-bottom: 8px; }
-.excerpt p:last-child { margin: 0; }
-.read-link {
-  font-family: var(--sans);
-  font-size: 12px;
-  margin-top: 6px;
-}
-.read-link a { color: var(--accent); text-decoration: underline; }
-
-.tags { margin-bottom: 8px; }
-.tag {
-  display: inline-block;
-  font-family: var(--sans);
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 2px 6px;
-  border: 1px solid currentColor;
-  border-radius: 2px;
-  margin-right: 5px;
-  line-height: 1.6;
-}
-
-.footer {
-  border-top: 3px double var(--rule);
-  padding: 32px 24px;
-  text-align: center;
-  font-family: var(--sans);
-  font-size: 11px;
-  color: var(--ink-3);
-  line-height: 1.8;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-.footer strong { color: var(--ink-2); }
-
-@media (max-width: 700px) {
-  .page-wrap { flex-direction: column; }
-  .sidebar {
-    width: 100%;
-    position: static;
-    max-height: none;
-    border-right: none;
-    border-bottom: 1px solid var(--rule);
-    padding: 16px 0;
-    overflow-y: visible;
-  }
-  .sidebar-inner {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px 12px;
-    padding: 0 16px;
-  }
-  .nav-section-label { width: 100%; margin: 10px 0 4px; }
-  .content { padding: 20px 16px; }
-}
-
-.empty { font-family: var(--sans); font-size: 13px; color: var(--ink-3); font-style: italic; }
 </style>
 </head>
 <body>
 
-<header class="masthead">
-  <p class="masthead-eyebrow">Weekly Education Landscape Digest</p>
-  <h1>Education News Roundup</h1>
-  <p class="masthead-dateline">Monday 14 September 2026</p>
-</header>
+<div class="np">
+  <div class="np-masthead" style="text-align:center;">
+    <svg class="np-emblem" width="40" height="30" viewBox="0 0 48 36" fill="none" stroke="#0d0d0a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 6 C18 3 10 3 4 5 V29 C10 27 18 27 24 30 C30 27 38 27 44 29 V5 C38 3 30 3 24 6 Z" />
+      <path d="M24 6 V30" />
+      <path d="M8 10 H18 M8 14 H18 M8 18 H16" />
+      <path d="M30 10 H40 M30 14 H40 M32 18 H40" />
+    </svg>
+    <div class="np-h1" style="text-align:center;">Education News Roundup</div>
+  </div>
+  <div class="np-rule-heavy"></div>
+  <div class="np-rule-thin"></div>
+  <div class="np-dateline">Monday, 14 September 2026</div>
 
-<div class="page-wrap">
+  <div class="np-body">
 
-  <nav class="sidebar">
-<div class="sidebar-inner">
-<p class="nav-section-label">Scale Portfolio</p>
-<a class="nav-link" href="#Malawi">Malawi</a>
-<a class="nav-link" href="#Sierra_Leone">Sierra Leone</a>
-<a class="nav-link" href="#Tanzania">Tanzania</a>
-<p class="nav-section-label">Pilot Sites</p>
-<a class="nav-link" href="#Burkina_Faso">Burkina Faso</a>
-<a class="nav-link" href="#Ghana">Ghana</a>
-<a class="nav-link" href="#Liberia">Liberia</a>
-</div>
-</nav>
+    <div class="np-country">Malawi</div>
+    <div class="np-card--media">
+      <div class="np-card-media">
+        <div class="np-photo-slot">
+          <!-- ═══ IMAGE: replace the <svg>...</svg> below with your own artwork — e.g. <img src="your-file.png" alt="" style="width:82%;height:82%;object-fit:contain;"> — keep this outer .np-photo-slot div as-is, it provides the frame/border/texture ═══ -->
+          <svg viewBox="0 0 320 200" fill="none" stroke="#0d0d0a" stroke-linecap="round" stroke-linejoin="round">
+            <g stroke-width="2.2">
+              <path d="M160 76 C138 62 78 60 34 68 V178 C78 170 138 172 160 186 C182 172 242 170 286 178 V68 C242 60 182 62 160 76 Z" />
+              <path d="M160 76 V186" />
+            </g>
+            <g stroke-width="1.6" opacity="0.75">
+              <path d="M52 90 H140" /><path d="M52 104 H140" /><path d="M52 118 H130" /><path d="M52 132 H140" /><path d="M52 146 H124" /><path d="M52 160 H136" />
+              <path d="M180 90 H268" /><path d="M180 104 H268" /><path d="M180 118 H258" /><path d="M180 132 H268" /><path d="M180 146 H252" /><path d="M180 160 H264" />
+            </g>
+          </svg>
+          <!-- ═══ END IMAGE ═══ -->
+        </div>
+      </div>
+      <div class="np-card-body">
+        <div class="np-kicker">Learning Outcomes &amp; Assessment</div>
+        <div class="np-hed"><a href="https://news.google.com/rss/articles/CBMigwFBVV95cUxQc2tnS05fTGY2bV84WG9SdHlaRHozZ2pvRC1zcWMtSkthaGFnMUNRenBXUnZwS0lOOVZ5REtRMGV0NW45U1JyMHQ1LTJ2TFpkRWdfakRaTERWNTJHenRYV1ZDV0lQald2U2RObW9MdzFDU0R2Q1JRSkVoMUZxaWNpVV9tWQ?oc=5" target="_blank" rel="noopener">Malawi exam results move online</a></div>
+        <div class="np-byline">ITWeb Africa — 9 Sep 2026</div>
+        <div class="np-excerpt"><p>Malawi's Ministry of Education and the Malawi National Examinations Board (MANEB) released the 2026 Malawi School Certificate of Education (MSCE) examination results on Monday, with candidates able to access them online.</p></div>
+      </div>
+    </div>
 
+    <div style="height: 1px; background: var(--ink-3); opacity: 0.4; margin: 36px 0 4px;"></div>
 
-  <main class="content">
-    <section class="geo-section" id="scale">
-<div class="section-rule"><span class="section-label">Scale Portfolio Countries</span></div>
-<div class="entity-block" id="Malawi">
-<h3 class="entity-hed">Malawi</h3>
-<div class="pillar-block">
-<article class="card">
-<h4 class="card-hed"><a href="https://news.google.com/rss/articles/CBMigwFBVV95cUxQc2tnS05fTGY2bV84WG9SdHlaRHozZ2pvRC1zcWMtSkthaGFnMUNRenBXUnZwS0lOOVZ5REtRMGV0NW45U1JyMHQ1LTJ2TFpkRWdfakRaTERWNTJHenRYV1ZDV0lQald2U2RObW9MdzFDU0R2Q1JRSkVoMUZxaWNpVV9tWQ?oc=5" target="_blank" rel="noopener">Malawi exam results move online</a></h4>
-<p class="card-meta">ITWeb Africa · 9 Sep 2026</p>
-<p class="read-link"><a href="https://news.google.com/rss/articles/CBMigwFBVV95cUxQc2tnS05fTGY2bV84WG9SdHlaRHozZ2pvRC1zcWMtSkthaGFnMUNRenBXUnZwS0lOOVZ5REtRMGV0NW45U1JyMHQ1LTJ2TFpkRWdfakRaTERWNTJHenRYV1ZDV0lQald2U2RObW9MdzFDU0R2Q1JRSkVoMUZxaWNpVV9tWQ?oc=5" target="_blank" rel="noopener">Read article</a></p>
-<div class="excerpt"><p>Malawi's Ministry of Education and the Malawi National Examinations Board (MANEB) released the 2026 Malawi School Certificate of Education (MSCE) examination results on Monday, with candidates able to access them online.</p></div>
-
-
-<div class="entity-block" id="Sierra_Leone">
-<h3 class="entity-hed">Sierra Leone</h3>
- 
-<div class="pillar-block">
-<div class="pillar-label">Learning Outcomes &amp; Assessment</div>
-<article class="card">
-<h4 class="card-hed"><a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxPTUlNWkxtSm1GazI1S0xaa01lRUhkSGpNMXBpWE95blF0ejdQZFdxenRHODdjbkpHdWF0OXpqUENrRzFST3ZLUWxCRnFvQXlTNElYdVBhVFR1MjN2MEEtRVJxT3loODZOdUpyUXo3c3dhR0tRZGdKbnJHZW4ySFBiYm5OdWZJVUU2SlE3N21wblhZTkd6WXBuZmhtVkZRYURRVEdVYXgwUmp4d3du?oc=5" target="_blank" rel="noopener">Back to School, Back to Learning: Building Strong Foundations for Every Child.</a></h4>
-<p class="card-meta">UNICEF · 14 Sep 2026</p>
-<div class="excerpt"><p> A child who learns to read with understanding in the early grades is more likely to succeed throughout school, develop confidence and access greater opportunities later in life. A child who struggles to acquire foundational literacy and numeracy skills faces a much steeper path.</p>
-    <p>The challenge is significant. National learning assessment data show that only 12 per cent of Grade 4 pupils achieve minimum proficiency in reading. This is a stark reminder that expanding access must go hand in hand with a renewed focus on the quality of learning.</p>
-    <p>Behind these numbers are children whose opportunities will be shaped by whether they learn to read, understand and work with numbers in their early years. Every child deserves the chance to experience the confidence that comes from reading a story independently for the first time. Sierra Leone's back-to-school moment must therefore also be a learning moment.</p></div>
-<p class="read-link"><a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxPTUlNWkxtSm1GazI1S0xaa01lRUhkSGpNMXBpWE95blF0ejdQZFdxenRHODdjbkpHdWF0OXpqUENrRzFST3ZLUWxCRnFvQXlTNElYdVBhVFR1MjN2MEEtRVJxT3loODZOdUpyUXo3c3dhR0tRZGdKbnJHZW4ySFBiYm5OdWZJVUU2SlE3N21wblhZTkd6WXBuZmhtVkZRYURRVEdVYXgwUmp4d3du?oc=5" target="_blank" rel="noopener">Read article</a></p>
-</article>
-</div>
-</div>
-
-</article>
-</div>
-<div class="pillar-block">
-<div class="pillar-label">Technology &amp; Innovation in Education</div>
-<article class="card">
-<h4 class="card-hed"><a href="https://goalkeepers.gatesfoundation.org/wp-content/uploads/2026/09/2026_Goalkeepers_Report_EN.pdf" target="_blank" rel="noopener">2026 Goalkeepers report</a></h4>
-<p class="card-meta">Gates Foundation · 15 Sep 2026</p>
-<div class="excerpt"><p>In Sierra Leone, teachers using an AI tool called Gemini Guided Learning are getting a new kind of support in the classroom. While teachers lead the lesson, students can turn to Gemini for help with math. When students ask for an answer, the tool responds with a question to help them work through and understand the concepts. In an eight-week trial across 12 schools, students made the equivalent of up to 1.7 years of typical learning progress.</p></div>
-</article>
-</div>
-</div>
-
-
-<div class="entity-block" id="Tanzania">
-<h3 class="entity-hed">Tanzania</h3>
-<div class="pillar-block">
-<div class="pillar-label">Policy, Budget &amp; Funding</div>
-<article class="card">
-<h4 class="card-hed"><a href="https://www.thecitizen.co.tz/samia-scholarship-innovations-eye-practical-use/" target="_blank" rel="noopener">Samia Scholarship innovations eye practical use</a></h4>
-<p class="card-meta">thecitizen.co.tz · 15 Sep 2026</p>
-<div class="excerpt"><p>Professor Pasape said the programme was also intended to address the shortage of skilled professionals in technology-related fields identified under Vision 2050.</p>
-
-    <p>“The Vision clearly states that we need sufficient skills, particularly in these areas of technology. Therefore, this programme responds to the issues identified in the Vision,” she said.</p>
-    
-    <p>She also called for greater involvement of the private sector and government institutions to help beneficiaries apply the skills acquired through the programme.</p></p></div>
-<p class="read-link"><a href="https://www.thecitizen.co.tz/samia-scholarship-innovations-eye-practical-use/" target="_blank" rel="noopener">Read article</a></p>
-</article>
-
-</div>
-<div class="pillar-block">
-<div class="pillar-label">Learning Outcomes &amp; Assessment</div>
-<article class="card">
-<h4 class="card-hed"><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxPZnpENEszbkRfUUxTVEFYaUNyLVZiOFg5NVpzS25qNkt6ak1RTnhWSVNqX3lPRnJfREk4MV9zT0NWNlIxX3pqN0QtcnhLcW9yWXItOXM3WkxhX2RsbXlQRnZ3M2VBMkdvckVuT3JjYkhMUUFscnJDZENZU0tpMWNzN1Vqd2NxTnVYQm1qd3E4MktPUQ?oc=5" target="_blank" rel="noopener">Vodacom Trains More Than 400,000 Young People in Digital Skills Since 2024</a></h4>
-<p class="card-meta">techafricanews.com · 8 Sep 2026</p>
-<div class="excerpt"><p>Vodacom also highlighted its work in foundational literacy in Tanzania, where its partnership with Twaweza East Africa supports literacy and numeracy for 79,390 early-grade learners across 256 schools. The company said a zero-rated teacher development platform has also enabled 121,832 teachers to access training resources without incurring data costs.</p>
-    <p>Vodacom said literacy is increasingly extending beyond basic reading and writing to include the ability to access information, navigate digital technologies and use them confidently. The company said combining connectivity with education and digital skills can help turn access to technology into greater economic and social opportunities across Africa.</p></div>
-<p class="read-link"><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxPZnpENEszbkRfUUxTVEFYaUNyLVZiOFg5NVpzS25qNkt6ak1RTnhWSVNqX3lPRnJfREk4MV9zT0NWNlIxX3pqN0QtcnhLcW9yWXItOXM3WkxhX2RsbXlQRnZ3M2VBMkdvckVuT3JjYkhMUUFscnJDZENZU0tpMWNzN1Vqd2NxTnVYQm1qd3E4MktPUQ?oc=5" target="_blank" rel="noopener">Read article</a></p>
-</article>
-</div>
-</div>
-
-
-
-</section>
-
-    <section class="geo-section" id="pilot">
-<div class="section-rule"><span class="section-label">Pilot Sites</span></div>
-<div class="entity-block" id="Burkina_Faso">
-<h3 class="entity-hed">Burkina Faso</h3>
-<div class="pillar-block">
-<div class="pillar-label">Policy, Budget &amp; Funding</div>
-<article class="card">
-<h4 class="card-hed"><a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxNeWFCdzFSbjNKM1RKNzBCWGpXU0xBbHNWMGVHcmFZU053QzBMV1ZBTVg5WnFvT092bERNTi1yanRJMTJURWZSdUhtNUpITVNtcXg2NTFsQ2dHaHltdmhLVl9kd3ZTeXJQejVuLUhqckRKUVM2ZVQ5bXlRZ1VpVm5JUHV6cGx4THBHTF8xTW1wNHpocEZWNElRR2JjRlZFcmdSbDNlbUxiN2sySDJBU2pUN2xxRnRXRWdsYVlic2FuelNTc00?oc=5" target="_blank" rel="noopener">UNICEF appeals for US$9.9 billion in humanitarian funding to support children affected by conflict and crisis in increasingly volatile world</a></h4>
-<p class="card-meta">Unicef · 5 Dec 2024</p>
-<div class="excerpt"><p>UNICEF plans to reach 24 million children accessing formal or non-formal education, including early learning</p></div>
-<p class="read-link"><a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxNeWFCdzFSbjNKM1RKNzBCWGpXU0xBbHNWMGVHcmFZU053QzBMV1ZBTVg5WnFvT092bERNTi1yanRJMTJURWZSdUhtNUpITVNtcXg2NTFsQ2dHaHltdmhLVl9kd3ZTeXJQejVuLUhqckRKUVM2ZVQ5bXlRZ1VpVm5JUHV6cGx4THBHTF8xTW1wNHpocEZWNElRR2JjRlZFcmdSbDNlbUxiN2sySDJBU2pUN2xxRnRXRWdsYVlic2FuelNTc00?oc=5" target="_blank" rel="noopener">Read article</a></p>
-</article>
-
-
-
-
-</div>
-</div>
-<div class="entity-block" id="Ghana">
-<h3 class="entity-hed">Ghana</h3>
-<div class="pillar-block">
-<div class="pillar-label">Policy, Budget &amp; Funding</div>
-<article class="card">
-<h4 class="card-hed"><a href="https://www.modernghana.com/news/1527790/from-free-and-compulsory-education-to-compulsory.html" target="_blank" rel="noopener">From Free and Compulsory Education to compulsory Extra Classes: The Ministry must act</a></h4>
-<p class="card-meta">Modern Ghana · 15 Sep 2026</p>
-<div class="excerpt"><p>Across many public basic schools, headteachers and some teachers have turned extra classes into a compulsory, fee-paying enterprise. Pupils from Class 1 to Class 6 are compelled to pay GHC 20, GHC 50, GHC 150 or more per term for "extra classes" organized during normal contact hours, after school, or on Saturdays.</p></div>
-<p class="read-link"><a href="https://www.modernghana.com/news/1527790/from-free-and-compulsory-education-to-compulsory.html" target="_blank" rel="noopener">Read article</a></p>
-</article>
-</div>
-<div class="pillar-block">
-<div class="pillar-label">Learning Outcomes &amp; Assessment</div>
-<article class="card">
-<h4 class="card-hed"><a href="https://allafrica.com/stories/202609100558.html" target="_blank" rel="noopener">Best Assurance partners GETFund to boost education with GHS100,000</a></h4>
-<p class="card-meta">Modern Ghana · 10 Sep 2026</p>
-<div class="excerpt"><p>Best Assurance Company Limited has joined the Ghana Education Trust Fund (GETFund) under the Educational Financial Partnerships Initiative (EFPI) to support the development of education in underserved communities across the country. As part of the partnership, the insurance company presented GH¢100,000 to GETFund on Wednesday, September 2, 2026, to support the provision of educational resources.</p></div>
-<p class="read-link"><a href="https://allafrica.com/stories/202609100558.html" target="_blank" rel="noopener">Read article</a></p>
-</article>
-</div>
-<div class="pillar-block">
-<div class="pillar-label">Technology &amp; Innovation in Education</div>
-<article class="card">
-<h4 class="card-hed"><a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE5UazZFakVIbWVuZC1XNmljOWR1VnlBNDdOX3Bmd1BxTWhSRXRFODFlYXNxRnhlSU9ETU1NTGF2QmtESUR3MFN0RnJVd2hNbVk1b0Y0QWN0blFQZ0sxcUhQcjZqTWJXX19HMGFsRXdsNzZQTDhfWEh5YnlrbnI?oc=5" target="_blank" rel="noopener">Beyond digital as usual</a></h4>
-<p class="card-meta">Unicef · 9 Sep 2026</p>
-<div class="excerpt"><p>UNICEF and our strategic partners are articulating a new vision to leverage Artificial Intelligence (AI), educational technology (EdTech) and other innovative approaches through our new Digital Education Strategy. The "Beyond Digital as Usual" strategy focuses on teacher empowerment, foundational learning, skills and competencies, systems strengthening and thought leadership. </p>
-
-    <p>It represents a paradigm shift in how we approach technology in education. We are moving beyond fragmented pilots to coordinated, strategic interventions that add real value by breaking down barriers and accelerating learning.</p> 
-    
-    <p> UNICEF’s role is to act as a trusted systems partner, convenor and catalyst, accompanying governments and partners to scale evidence-based solutions responsibly.</p> 
-    
-    <p> The initial phase of the strategy will scale innovative, AI and EdTech-enabled teaching and learning programmes across 18 countries: Benin, Bolivia, Brazil, Chad, Côte d’Ivoire, Egypt, Ghana, Guinea, India, Jordan, Kenya, Kyrgyzstan, Lao PDR, Pakistan, Philippines, Sudan, Tanzania and Ukraine. </p></div>
-<p class="read-link"><a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE5UazZFakVIbWVuZC1XNmljOWR1VnlBNDdOX3Bmd1BxTWhSRXRFODFlYXNxRnhlSU9ETU1NTGF2QmtESUR3MFN0RnJVd2hNbVk1b0Y0QWN0blFQZ0sxcUhQcjZqTWJXX19HMGFsRXdsNzZQTDhfWEh5YnlrbnI?oc=5" target="_blank" rel="noopener">Read article</a></p>
-</article>
-</div>
-</div>
-<div class="entity-block" id="Liberia">
-<h3 class="entity-hed">Liberia</h3>
-<div class="pillar-block">
-<div class="pillar-label">Policy, Budget &amp; Funding</div>
-<article class="card">
-<h4 class="card-hed"><a href="https://africa24tv.com/liberia-president-boakai-reaffirms-national-commitment-to-return-250000-children-to-the-classroom/" target="_blank" rel="noopener">Liberia: President Boakai Reaffirms National Commitment to Return 250,000 Children to the Classroom</a></h4>
-<p class="card-meta">Africa24 TV · 12 Sep 2026</p>
-<div class="excerpt"><p>Launched in 2024, BTMC seeks to return 250,000 out-of-school children to education by 2029, beginning with 80,000 children across seven priority counties in 2026.
-</p><p>Since its launch, the Campaign has strengthened national coordination, incorporated lessons from the Grand Bassa pilot, established the first County Steering Committee and Secretariat in Gbarpolu, and advanced systems for coordinated referrals, child-level tracking, retention and accountability.</p></div>
-<p class="read-link"><a href="https://africa24tv.com/liberia-president-boakai-reaffirms-national-commitment-to-return-250000-children-to-the-classroom/" target="_blank" rel="noopener">Read article</a></p>
-</article>
-</div>
-<div class="pillar-block">
-<div class="pillar-label">Learning Outcomes &amp; Assessment</div>
-<article class="card">
-<h4 class="card-hed"><a href="https://news.google.com/rss/articles/CBMi4gFBVV95cUxQczJRUENQYkJJa3MxQy1FNm5WU3g0NDdWQkZqdEFKbHdfSFgtbmtOVE5NWnI4cE5yRTdrT3N1UnRCMy15T2Rhd19IMGFxRDRHR1hlZU9kWFRRbW1tdml3TFBUT2Z6ZzRnUjczajhsLVVVN29WUy1YZEl1b0k3bWV1Q2lOTTQ5QVNLSDJxZl81bmZrNlFDRkJxbTVLZUI1alhORTNZM3J0MGw2djN1dk04aXVfR3kzRHJYS2hwNHlIOVFOdnNVNkkxR3NtbnNEaFF2dy1Nd044NDdTZExJdUk4dDhR?oc=5" target="_blank" rel="noopener">Liberia: MCSS Teachers Boycott Threat Disrupts New School Year</a></h4>
-<p class="card-meta">Wansom AI · 9 Sep 2026</p>
-<div class="excerpt"><p>Teachers from the Monrovia Consolidated School System (MCSS) have begun a go-slow action.
+    <div class="np-columns">
+      <div class="np-country">Sierra Leone</div>
+      <div class="np-card">
+      <div class="np-kicker">Learning Outcomes & Assessment</div>
+      <div class="np-hed"><a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxPTUlNWkxtSm1GazI1S0xaa01lRUhkSGpNMXBpWE95blF0ejdQZFdxenRHODdjbkpHdWF0OXpqUENrRzFST3ZLUWxCRnFvQXlTNElYdVBhVFR1MjN2MEEtRVJxT3loODZOdUpyUXo3c3dhR0tRZGdKbnJHZW4ySFBiYm5OdWZJVUU2SlE3N21wblhZTkd6WXBuZmhtVkZRYURRVEdVYXgwUmp4d3du?oc=5" target="_blank" rel="noopener">Back to School, Back to Learning: Building Strong Foundations for Every Child.</a></div>
+      <div class="np-byline">UNICEF — 14 Sep 2026</div>
+      <div class="np-excerpt"><p>A child who learns to read with understanding in the early grades is more likely to succeed throughout school, develop confidence and access greater opportunities later in life. A child who struggles to acquire foundational literacy and numeracy skills faces a much steeper path.</p><p>The challenge is significant. National learning assessment data show that only 12 per cent of Grade 4 pupils achieve minimum proficiency in reading. This is a stark reminder that expanding access must go hand in hand with a renewed focus on the quality of learning.</p><p>Behind these numbers are children whose opportunities will be shaped by whether they learn to read, understand and work with numbers in their early years. Every child deserves the chance to experience the confidence that comes from reading a story independently for the first time. Sierra Leone's back-to-school moment must therefore also be a learning moment.</p></div>
+    </div>
+      <div class="np-country">Tanzania</div>
+      <div class="np-card">
+      <div class="np-kicker">Policy, Budget & Funding</div>
+      <div class="np-hed"><a href="https://www.thecitizen.co.tz/samia-scholarship-innovations-eye-practical-use/" target="_blank" rel="noopener">Samia Scholarship innovations eye practical use</a></div>
+      <div class="np-byline">thecitizen.co.tz — 15 Sep 2026</div>
+      <div class="np-excerpt"><p>Professor Pasape said the programme was also intended to address the shortage of skilled professionals in technology-related fields identified under Vision 2050.</p><p>“The Vision clearly states that we need sufficient skills, particularly in these areas of technology. Therefore, this programme responds to the issues identified in the Vision,” she said.</p><p>She also called for greater involvement of the private sector and government institutions to help beneficiaries apply the skills acquired through the programme.</p></div>
+    </div>
+      <div class="np-card">
+      <div class="np-kicker">Learning Outcomes & Assessment</div>
+      <div class="np-hed"><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxPZnpENEszbkRfUUxTVEFYaUNyLVZiOFg5NVpzS25qNkt6ak1RTnhWSVNqX3lPRnJfREk4MV9zT0NWNlIxX3pqN0QtcnhLcW9yWXItOXM3WkxhX2RsbXlQRnZ3M2VBMkdvckVuT3JjYkhMUUFscnJDZENZU0tpMWNzN1Vqd2NxTnVYQm1qd3E4MktPUQ?oc=5" target="_blank" rel="noopener">Vodacom Trains More Than 400,000 Young People in Digital Skills Since 2024</a></div>
+      <div class="np-byline">techafricanews.com — 8 Sep 2026</div>
+      <div class="np-excerpt"><p>Vodacom also highlighted its work in foundational literacy in Tanzania, where its partnership with Twaweza East Africa supports literacy and numeracy for 79,390 early-grade learners across 256 schools. The company said a zero-rated teacher development platform has also enabled 121,832 teachers to access training resources without incurring data costs.</p><p>Vodacom said literacy is increasingly extending beyond basic reading and writing to include the ability to access information, navigate digital technologies and use them confidently. The company said combining connectivity with education and digital skills can help turn access to technology into greater economic and social opportunities across Africa.</p></div>
+    </div>
+      <div class="np-country">Burkina Faso</div>
+      <div class="np-card">
+      <div class="np-kicker">Policy, Budget & Funding</div>
+      <div class="np-hed"><a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxNeWFCdzFSbjNKM1RKNzBCWGpXU0xBbHNWMGVHcmFZU053QzBMV1ZBTVg5WnFvT092bERNTi1yanRJMTJURWZSdUhtNUpITVNtcXg2NTFsQ2dHaHltdmhLVl9kd3ZTeXJQejVuLUhqckRKUVM2ZVQ5bXlRZ1VpVm5JUHV6cGx4THBHTF8xTW1wNHpocEZWNElRR2JjRlZFcmdSbDNlbUxiN2sySDJBU2pUN2xxRnRXRWdsYVlic2FuelNTc00?oc=5" target="_blank" rel="noopener">UNICEF appeals for US$9.9 billion in humanitarian funding to support children affected by conflict and crisis in increasingly volatile world</a></div>
+      <div class="np-byline">Unicef — 5 Dec 2024</div>
+      <div class="np-excerpt"><p>UNICEF plans to reach 24 million children accessing formal or non-formal education, including early learning</p></div>
+    </div>
+      <div class="np-country">Ghana</div>
+      <div class="np-card">
+      <div class="np-kicker">Policy, Budget & Funding</div>
+      <div class="np-hed"><a href="https://www.modernghana.com/news/1527790/from-free-and-compulsory-education-to-compulsory.html" target="_blank" rel="noopener">From Free and Compulsory Education to compulsory Extra Classes: The Ministry must act</a></div>
+      <div class="np-byline">Modern Ghana — 15 Sep 2026</div>
+      <div class="np-excerpt"><p>Across many public basic schools, headteachers and some teachers have turned extra classes into a compulsory, fee-paying enterprise. Pupils from Class 1 to Class 6 are compelled to pay GHC 20, GHC 50, GHC 150 or more per term for "extra classes" organized during normal contact hours, after school, or on Saturdays.</p></div>
+    </div>
+      <div class="np-card">
+      <div class="np-kicker">Learning Outcomes & Assessment</div>
+      <div class="np-photo-slot">
+        <!-- ═══ IMAGE: replace the <svg>...</svg> below with your own artwork — e.g. <img src="your-file.png" alt="" style="width:82%;height:82%;object-fit:contain;"> — keep this outer .np-photo-slot div as-is, it provides the frame/border/texture ═══ -->
+        <svg viewBox="0 0 320 200" fill="none" stroke="#0d0d0a" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M118 44 L138 26 H182 L202 44" stroke-width="2.2" />
+          <rect x="52" y="44" width="216" height="128" stroke-width="2.4" />
+          <path d="M76 128 H244" stroke-width="1.3" opacity="0.6" />
+          <text x="160" y="112" font-family="Georgia, 'Times New Roman', serif" font-size="46" font-weight="700" fill="#0d0d0a" stroke="none" text-anchor="middle" letter-spacing="2">abcdef</text>
+        </svg>
+        <!-- ═══ END IMAGE ═══ -->
+      </div>
+      <div class="np-hed"><a href="https://www.modernghana.com/best-assurance-partners-getfund-to-boost-education-with-ghs100000/" target="_blank" rel="noopener">Best Assurance partners GETFund to boost education with GHS100,000</a></div>
+      <div class="np-byline">Modern Ghana — 10 Sep 2026</div>
+      <div class="np-excerpt"><p>Best Assurance Company Limited has joined the Ghana Education Trust Fund (GETFund) under the Educational Financial Partnerships Initiative (EFPI) to support the development of education in underserved communities across the country. As part of the partnership, the insurance company presented GH¢100,000 to GETFund on Wednesday, September 2, 2026, to support the provision of educational resources.</p></div>
+    </div>
+      <div class="np-card">
+      <div class="np-kicker">Technology & Innovation in Education</div>
+      <div class="np-hed"><a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE5UazZFakVIbWVuZC1XNmljOWR1VnlBNDdOX3Bmd1BxTWhSRXRFODFlYXNxRnhlSU9ETU1NTGF2QmtESUR3MFN0RnJVd2hNbVk1b0Y0QWN0blFQZ0sxcUhQcjZqTWJXX19HMGFsRXdsNzZQTDhfWEh5YnlrbnI?oc=5" target="_blank" rel="noopener">Beyond digital as usual</a></div>
+      <div class="np-byline">Unicef — 9 Sep 2026</div>
+      <div class="np-excerpt"><p>UNICEF and our strategic partners are articulating a new vision to leverage Artificial Intelligence (AI), educational technology (EdTech) and other innovative approaches through our new Digital Education Strategy. The "Beyond Digital as Usual" strategy focuses on teacher empowerment, foundational learning, skills and competencies, systems strengthening and thought leadership.</p><p>It represents a paradigm shift in how we approach technology in education. We are moving beyond fragmented pilots to coordinated, strategic interventions that add real value by breaking down barriers and accelerating learning.</p><p>UNICEF’s role is to act as a trusted systems partner, convenor and catalyst, accompanying governments and partners to scale evidence-based solutions responsibly.</p><p>The initial phase of the strategy will scale innovative, AI and EdTech-enabled teaching and learning programmes across 18 countries: Benin, Bolivia, Brazil, Chad, Côte d’Ivoire, Egypt, Ghana, Guinea, India, Jordan, Kenya, Kyrgyzstan, Lao PDR, Pakistan, Philippines, Sudan, Tanzania and Ukraine.</p></div>
+    </div>
+      <div class="np-country">Liberia</div>
+      <div class="np-card">
+      <div class="np-kicker">Policy, Budget & Funding</div>
+      <div class="np-hed"><a href="https://africa24tv.com/liberia-president-boakai-reaffirms-national-commitment-to-return-250000-children-to-the-classroom/" target="_blank" rel="noopener">Liberia: President Boakai Reaffirms National Commitment to Return 250,000 Children to the Classroom</a></div>
+      <div class="np-byline">Africa24 TV — 12 Sep 2026</div>
+      <div class="np-excerpt"><p>Launched in 2024, BTMC seeks to return 250,000 out-of-school children to education by 2029, beginning with 80,000 children across seven priority counties in 2026.</p><p>Since its launch, the Campaign has strengthened national coordination, incorporated lessons from the Grand Bassa pilot, established the first County Steering Committee and Secretariat in Gbarpolu, and advanced systems for coordinated referrals, child-level tracking, retention and accountability.</p></div>
+    </div>
+      <div class="np-card">
+      <div class="np-kicker">Learning Outcomes & Assessment</div>
+      <div class="np-hed"><a href="https://news.google.com/rss/articles/CBMi4gFBVV95cUxQczJRUENQYkJJa3MxQy1FNm5WU3g0NDdWQkZqdEFKbHdfSFgtbmtOVE5NWnI4cE5yRTdrT3N1UnRCMy15T2Rhd19IMGFxRDRHR1hlZU9kWFRRbW1tdml3TFBUT2Z6ZzRnUjczajhsLVVVN29WUy1YZEl1b0k3bWV1Q2lOTTQ5QVNLSDJxZl81bmZrNlFDRkJxbTVLZUI1alhORTNZM3J0MGw2djN1dk04aXVfR3kzRHJYS2hwNHlIOVFOdnNVNkkxR3NtbnNEaFF2dy1Nd044NDdTZExJdUk4dDhR?oc=5" target="_blank" rel="noopener">Liberia: MCSS Teachers Boycott Threat Disrupts New School Year</a></div>
+      <div class="np-byline">Wansom AI — 9 Sep 2026</div>
+      <div class="np-excerpt"><p>Teachers from the Monrovia Consolidated School System (MCSS) have begun a go-slow action.
     The go-slow action is driven by unresolved salary, payroll, and employment-related grievances.
     This action coincides with the start of the 2026 academic year, posing a significant disruption.
     Thousands of students in Liberia's public education system are at risk due to the ongoing confrontation.</p></div>
-<p class="read-link"><a href="https://news.google.com/rss/articles/CBMi4gFBVV95cUxQczJRUENQYkJJa3MxQy1FNm5WU3g0NDdWQkZqdEFKbHdfSFgtbmtOVE5NWnI4cE5yRTdrT3N1UnRCMy15T2Rhd19IMGFxRDRHR1hlZU9kWFRRbW1tdml3TFBUT2Z6ZzRnUjczajhsLVVVN29WUy1YZEl1b0k3bWV1Q2lOTTQ5QVNLSDJxZl81bmZrNlFDRkJxbTVLZUI1alhORTNZM3J0MGw2djN1dk04aXVfR3kzRHJYS2hwNHlIOVFOdnNVNkkxR3NtbnNEaFF2dy1Nd044NDdTZExJdUk4dDhR?oc=5" target="_blank" rel="noopener">Read article</a></p>
-</article>
+    </div>
+    </div>
+  </div>
+
+  <div class="np-footer">
+    <strong>Education News Roundup</strong><br>
+    Monday 14 September 2026 &nbsp;·&nbsp; Tue, 15 Sep 2026 15:29 UTC<br>
+    Articles sourced from Google News RSS · Top 3 per country ranked by estimated reach<br>
+    Excerpts reproduced verbatim from publisher pages where accessible<br><br>
+    This roundup is produced automatically through a news scraper. Kindly click each article
+    title to read the full piece on the original publisher's site. Content has not always been
+    editorially reviewed.<br><br>
+    Tags applied where terms appear in article titles or extracted text:
+    <strong style="font-family:'Oswald',sans-serif; font-size:10.5px; text-transform:none; letter-spacing:0.04em;">Youth · Women · Disabilities · Refugees · IW</strong>
+  </div>
 </div>
- 
-</section>
-
-  </main>
-
-</div>
-
-<footer class="footer">
-  <strong>Weekly Education Landscape Digest: Scale &amp; Pilot Countries</strong><br>
-  Monday 14 September 2026 &nbsp;·&nbsp; Tue, 15 Sep 2026 15:29 UTC<br>
-  Articles sourced from Google News RSS · Top 3 per country ranked by estimated reach<br>
-  Excerpts reproduced verbatim from publisher pages where accessible<br><br>
-  This roundup is produced automatically through a news scraper. Kindly click each article
-  title to read the full piece on the original publisher's site. Content has not always been
-  editorially reviewed.<br><br>
-  Tags applied where terms appear in article titles or extracted text:
-  <strong>Youth · Women · Disabilities · Refugees · IW</strong>
-</footer>
 
 </body>
 </html>
