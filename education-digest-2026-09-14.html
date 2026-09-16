@@ -43,13 +43,15 @@ body { background: var(--page-bg); font-family: 'PT Serif', Georgia, serif; padd
 .np-photo-slot { width: 100%; aspect-ratio: 16/10; margin-bottom: 8px; position: relative; overflow: hidden; background: #e4dfcd; border: 1.5px solid var(--ink); display: flex; align-items: center; justify-content: center; }
 .np-photo-slot svg { width: 82%; height: 82%; }
 .np-photo-slot::after { content: ''; position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(circle, var(--ink) 0.6px, transparent 0.6px); background-size: 3.2px 3.2px; opacity: 0.28; mix-blend-mode: multiply; }
-.np-card--media { display: grid; grid-template-columns: 260px 1fr; column-gap: 22px; align-items: start; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid #a89f88; break-inside: avoid; }
+.np-card--media { margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid #a89f88; break-inside: avoid; }
+.np-card--media::after { content: ''; display: table; clear: both; }
+.np-card-media { float: left; width: 260px; margin-right: 22px; margin-bottom: 10px; }
 .np-card-media .np-photo-slot { margin-bottom: 0; }
 .np-footer { font-family: 'Oswald', sans-serif; font-size: 10.5px; color: var(--ink-3); text-align: center; padding: 22px 20px; border-top: 3px double var(--ink); line-height: 1.9; }
 .np-footer strong { color: var(--ink); font-family: 'Playfair Display', serif; font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em; }
 @media (max-width: 620px) {
   .np-columns { columns: 1; }
-  .np-card--media { grid-template-columns: 1fr; }
+  .np-card-media { float: none; width: 100%; margin-right: 0; }
   .np-h1 { font-size: 38px; }
 }
 
@@ -95,14 +97,7 @@ body { background: var(--page-bg); font-family: 'PT Serif', Georgia, serif; padd
         <div class="np-kicker">Learning Outcomes &amp; Assessment</div>
         <div class="np-hed"><a href="https://news.google.com/rss/articles/CBMigwFBVV95cUxQc2tnS05fTGY2bV84WG9SdHlaRHozZ2pvRC1zcWMtSkthaGFnMUNRenBXUnZwS0lOOVZ5REtRMGV0NW45U1JyMHQ1LTJ2TFpkRWdfakRaTERWNTJHenRYV1ZDV0lQald2U2RObW9MdzFDU0R2Q1JRSkVoMUZxaWNpVV9tWQ?oc=5" target="_blank" rel="noopener">Malawi exam results move online</a></div>
         <div class="np-byline">ITWeb Africa — 9 Sep 2026</div>
-        <div class="np-excerpt"><p>Malawi's Ministry of Education and the Malawi National Examinations Board (MANEB) released the 2026 Malawi School Certificate of Education (MSCE) examination results on Monday, with candidates able to access them online.</p>
-        <p>Previously, printed results had to be physically delivered to districts, creating challenges for remote schools and straining resources.</p>
-
-  <p>That changed in 2022, when the board introduced an e-registration system that allowed examination centres to register candidates online.</p>
-
-<p>In 2024, the board introduced e-results portals, allowing candidates and examination centres to access examination results directly, while examination fees can be paid through banks and mobile wallets.</p>
-
-<p>“Examination centres have registration portals where they capture and register candidates, and the same portals are the ones through which they access their examination results in the comfort of their homes,” MANEB public relations manager Angella Kashitigu told ITWeb Africa in an interview.</p></div>
+        <div class="np-excerpt"><p>Malawi's Ministry of Education and the Malawi National Examinations Board (MANEB) released the 2026 Malawi School Certificate of Education (MSCE) examination results on Monday, with candidates able to access them online.</p><p>Previously, printed results had to be physically delivered to districts, creating challenges for remote schools and straining resources.</p><p>That changed in 2022, when the board introduced an e-registration system that allowed examination centres to register candidates online.</p><p>In 2024, the board introduced e-results portals, allowing candidates and examination centres to access examination results directly, while examination fees can be paid through banks and mobile wallets.</p><p>&ldquo;Examination centres have registration portals where they capture and register candidates, and the same portals are the ones through which they access their examination results in the comfort of their homes,&rdquo; MANEB public relations manager Angella Kashitigu told ITWeb Africa in an interview.</p></div>
       </div>
     </div>
 
@@ -131,10 +126,16 @@ body { background: var(--page-bg); font-family: 'PT Serif', Georgia, serif; padd
     </div>
       <div class="np-country">Burkina Faso</div>
       <div class="np-card">
+      <div class="np-kicker">Teachers, Schools & Continuity</div>
+      <div class="np-hed"><a href="https://unesdoc.unesco.org/ark:/48223/pf0000399340" target="_blank" rel="noopener">Burkina Faso: factors leading children to never enroll in school or drop out</a></div>
+      <div class="np-byline">UNESCO — 2026</div>
+      <div class="np-excerpt"><p>Gross enrolment rates in primary and secondary schools have improved over the past twenty years in Burkina Faso but remain low. Many factors can cause children to never enroll in school or drop out prematurely. These factors include lack of schools nearby, health issues or a disability, the cost of schooling, lack of learning, social norms, security issues, or other factors. Using data from two recent household surveys, this brief analyzes the factors at play by level of education and gender.</p></div>
+    </div>
+      <div class="np-card">
       <div class="np-kicker">Policy, Budget & Funding</div>
-      <div class="np-hed"><a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxNeWFCdzFSbjNKM1RKNzBCWGpXU0xBbHNWMGVHcmFZU053QzBMV1ZBTVg5WnFvT092bERNTi1yanRJMTJURWZSdUhtNUpITVNtcXg2NTFsQ2dHaHltdmhLVl9kd3ZTeXJQejVuLUhqckRKUVM2ZVQ5bXlRZ1VpVm5JUHV6cGx4THBHTF8xTW1wNHpocEZWNElRR2JjRlZFcmdSbDNlbUxiN2sySDJBU2pUN2xxRnRXRWdsYVlic2FuelNTc00?oc=5" target="_blank" rel="noopener">UNICEF appeals for US$9.9 billion in humanitarian funding to support children affected by conflict and crisis in increasingly volatile world</a></div>
-      <div class="np-byline">Unicef — 5 Dec 2024</div>
-      <div class="np-excerpt"><p>UNICEF plans to reach 24 million children accessing formal or non-formal education, including early learning</p></div>
+      <div class="np-hed"><a href="https://reliefweb.int/attachments/d7ccbf46-bd0e-43fd-87ab-fc68b942f2a3/Caught%20Between%20Conflict%20and%20Funding%20Cuts%20-%20Education%20under%20threat%20in%20CWA.pdf" target="_blank" rel="noopener">Caught Between Conflict and Funding Cuts: Education Under Threat in West &amp; Central Africa</a></div>
+      <div class="np-byline">ReliefWeb — September 2026</div>
+      <div class="np-excerpt"><p>Nigeria accounted for nearly 70% of all reported primary school-aged out-of-school children (OOSC) in the region, while Burkina Faso counted nearly 3 million OOSC in 2025. Burkina Faso has moved beyond endorsement of the Safe Schools Declaration by establishing a national implementation committee and seven regional committees, helping translate commitments into practical action and strengthen local ownership of school protection efforts.</p><p>The Central Sahel illustrates the scale of the funding challenge. In 2026, Burkina Faso, Mali and Niger accounted for almost 54% of all education funding requirements across West and Central Africa and almost 54% of the region's funding gap. Despite persistent insecurity, displacement and school closures, funding coverage remained low, ranging from just 11% in Mali, 13% in Niger, to 21% in Burkina Faso.</p></div>
     </div>
       <div class="np-country">Ghana</div>
       <div class="np-card">
@@ -148,7 +149,16 @@ body { background: var(--page-bg); font-family: 'PT Serif', Georgia, serif; padd
       <div class="np-photo-slot">
         <!-- ═══ IMAGE: replace the <svg>...</svg> below with your own artwork — e.g. <img src="your-file.png" alt="" style="width:82%;height:82%;object-fit:contain;"> — keep this outer .np-photo-slot div as-is, it provides the frame/border/texture ═══ -->
         <svg viewBox="0 0 320 200" fill="none" stroke="#0d0d0a" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M118 44 L138 26 H182 L202 44" stroke-width="2.2" />
+          <!-- radiating light rays above the tab, same motif as the book emblem -->
+          <g stroke-width="1" opacity="0.45">
+            <path d="M160 20 L160 2" />
+            <path d="M160 20 L130 6" />
+            <path d="M160 20 L190 6" />
+            <path d="M160 20 L104 16" />
+            <path d="M160 20 L216 16" />
+          </g>
+          <!-- proper protruding tab, distinct rectangle sitting on top of the card -->
+          <rect x="126" y="18" width="68" height="28" stroke-width="2.2" />
           <rect x="52" y="44" width="216" height="128" stroke-width="2.4" />
           <path d="M76 128 H244" stroke-width="1.3" opacity="0.6" />
           <text x="160" y="112" font-family="Georgia, 'Times New Roman', serif" font-size="46" font-weight="700" fill="#0d0d0a" stroke="none" text-anchor="middle" letter-spacing="2">abcdef</text>
