@@ -509,6 +509,15 @@ def process_entity(entity):
                 print(f'    [{cat_name}] {parsed["title"]}')
                 real_url, paragraphs = resolve_article(parsed)
                 is_google = "google.com" in real_url
+
+                # Skip articles that resolved to a .net domain — these have
+                # consistently turned out to be low-quality mirror/aggregator
+                # sites rather than the original publisher.
+                resolved_domain = urllib.parse.urlparse(real_url).netloc.lower()
+                if resolved_domain.endswith(".net"):
+                    print(f'         → skipped ({resolved_domain} is a .net domain)')
+                    continue
+
                 status    = f"{len(paragraphs)}p" if paragraphs else ("google-link" if is_google else "no text")
                 print(f'         → {real_url}  [{status}]')
 
