@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Education News Roundup — Monday 12 October 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Oswald:wght@500;600;700&family=PT+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; border-radius: 0 !important; box-shadow: none !important; }
+:root { --page-bg: #d9d4c2; --ink: #0d0d0a; --ink-3: #4a463c; color-scheme: light; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --page-bg: #15140f; --ink: #ece8de; --ink-3: #b0ab99; }
+}
+:root[data-theme="dark"] { --page-bg: #15140f; --ink: #ece8de; --ink-3: #b0ab99; }
+
+body { background: var(--page-bg); font-family: 'PT Serif', Georgia, serif; padding: 24px 12px 80px; }
+
+.np {
+  max-width: 980px; margin: 0 auto; color: var(--ink);
+  background: #f0ecdf;
+  background-image: radial-gradient(rgba(0,0,0,0.05) 0.6px, transparent 0.6px);
+  background-size: 2.4px 2.4px;
+  border: 1px solid var(--ink);
+}
+.np-masthead { padding: 16px 20px 0; text-align: center; }
+.np-emblem { display: block; margin: 0 auto 4px; }
+.np-h1 {
+  font-family: 'Playfair Display', serif; font-weight: 900; font-size: 64px; line-height: 0.92;
+  letter-spacing: -0.02em; text-transform: uppercase; margin: 6px 0 2px;
+}
+.np-rule-heavy { height: 7px; background: var(--ink); margin: 4px 0 0; }
+.np-rule-thin  { height: 1px; background: var(--ink); margin: 2px 0 0; }
+.np-dateline {
+  font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--ink-3); padding: 6px 20px 8px; border-bottom: 3px solid var(--ink); text-align: center;
+}
+.np-body { padding: 0 20px 24px; }
+
+.np-country {
+  font-family: 'Playfair Display', serif; font-weight: 900; font-size: 34px; text-transform: uppercase;
+  letter-spacing: -0.01em; line-height: 1; border-bottom: 3px solid var(--ink); padding: 10px 0 6px; margin-bottom: 12px;
+  break-after: avoid; break-inside: avoid;
+}
+.np-divider { height: 1px; background: var(--ink-3); opacity: 0.4; margin: 36px 0 4px; }
+.np-empty { font-family: 'Oswald', sans-serif; font-size: 13px; color: var(--ink-3); font-style: italic; padding: 12px 0; }
+
+/* Continuous flow section: real 2-column newsprint text */
+.np-columns { columns: 2; column-gap: 20px; column-rule: 1px solid var(--ink); }
+.np-card { break-inside: avoid; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid #a89f88; }
+
+/* Lead country's featured card — float, NOT grid, so long excerpts wrap
+   around the image then continue full-width instead of leaving a gap */
+.np-card--media { margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid #a89f88; break-inside: avoid; }
+.np-card--media::after { content: ''; display: table; clear: both; }
+.np-card-media { float: left; width: 260px; margin-right: 22px; margin-bottom: 10px; }
+.np-card-media .np-photo-slot { margin-bottom: 0; }
+
+.np-kicker { font-family: 'Oswald', sans-serif; font-size: 9.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 2px; }
+.np-hed { font-family: 'PT Serif', Georgia, serif; font-size: 17.5px; font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 3px; }
+.np-hed a { color: var(--ink); text-decoration: none; }
+.np-byline { font-family: 'Oswald', sans-serif; font-size: 9.5px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 5px; }
+.np-excerpt { font-family: 'PT Serif', Georgia, serif; font-size: 12.5px; line-height: 1.42; text-align: justify; hyphens: auto; color: #1c1a14; }
+.np-excerpt p { margin-bottom: 4px; }
+.np-read-link { font-family: 'Oswald', sans-serif; font-size: 11px; }
+.np-read-link a { color: var(--ink); text-decoration: underline; }
+
+.np-photo-slot {
+  width: 100%; aspect-ratio: 16/10; margin-bottom: 8px; position: relative; overflow: hidden;
+  background: #e4dfcd; border: 1.5px solid var(--ink); display: flex; align-items: center; justify-content: center;
+}
+.np-photo-slot svg { width: 82%; height: 82%; }
+.np-photo-slot::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(circle, var(--ink) 0.6px, transparent 0.6px);
+  background-size: 3.2px 3.2px; opacity: 0.28; mix-blend-mode: multiply;
+}
+
+.np-tags { margin-bottom: 6px; }
+.np-tag {
+  display: inline-block; font-family: 'Oswald', sans-serif; font-size: 9px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 6px; border: 1px solid currentColor;
+  margin-right: 5px;
+}
+
+.np-footer {
+  font-family: 'Oswald', sans-serif; font-size: 10.5px; color: var(--ink-3); text-align: center;
+  padding: 22px 20px; border-top: 3px double var(--ink); line-height: 1.9;
+}
+.np-footer strong { color: var(--ink); font-family: 'Playfair Display', serif; font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em; }
+.np-footer .np-tag-legend { font-family: 'Oswald', sans-serif; font-size: 10.5px; text-transform: none; letter-spacing: 0.04em; }
+
+@media (max-width: 620px) {
+  .np-columns { columns: 1; }
+  .np-card-media { float: none; width: 100%; margin-right: 0; }
+  .np-h1 { font-size: 38px; }
+}
+</style>
+</head>
+<body>
+
+<div class="np">
+  <div class="np-masthead">
+    <svg class="np-emblem" width="40" height="30" viewBox="0 0 48 36" fill="none" stroke="#0d0d0a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 6 C18 3 10 3 4 5 V29 C10 27 18 27 24 30 C30 27 38 27 44 29 V5 C38 3 30 3 24 6 Z" />
+      <path d="M24 6 V30" />
+      <path d="M8 10 H18 M8 14 H18 M8 18 H16" />
+      <path d="M30 10 H40 M30 14 H40 M32 18 H40" />
+    </svg>
+    <div class="np-h1">Education News Roundup</div>
+  </div>
+  <div class="np-rule-heavy"></div>
+  <div class="np-rule-thin"></div>
+  <div class="np-dateline">Monday 12 October 2026</div>
+
+  <div class="np-body">
+    <div class="np-country">Malawi</div>
+<!-- ══════ ARTICLE: The human cost of global aid cuts – and how Scotland is bucking the trend — delete this whole block down to "END ARTICLE" to remove it ══════ -->
+<div class="np-card--media">
+      <div class="np-card-media">
+        <div class="np-photo-slot">
+          <!-- ═══ IMAGE: replace the <svg>...</svg> below with your own artwork — e.g. <img src="your-file.png" alt="" style="width:82%;height:82%;object-fit:contain;"> — keep this outer .np-photo-slot div as-is, it provides the frame/border/texture ═══ -->
+          <svg viewBox="0 0 320 200" fill="none" stroke="#0d0d0a" stroke-linecap="round" stroke-linejoin="round">
+            <g stroke-width="2.2">
+              <path d="M160 76 C138 62 78 60 34 68 V178 C78 170 138 172 160 186 C182 172 242 170 286 178 V68 C242 60 182 62 160 76 Z" />
+              <path d="M160 76 V186" />
+            </g>
+            <g stroke-width="1.6" opacity="0.75">
+              <path d="M52 90 H140" /><path d="M52 104 H140" /><path d="M52 118 H130" /><path d="M52 132 H140" /><path d="M52 146 H124" /><path d="M52 160 H136" />
+              <path d="M180 90 H268" /><path d="M180 104 H268" /><path d="M180 118 H258" /><path d="M180 132 H268" /><path d="M180 146 H252" /><path d="M180 160 H264" />
+            </g>
+          </svg>
+          <!-- ═══ END IMAGE ═══ -->
+        </div>
+      </div>
+      <div class="np-kicker">Policy, Budget &amp; Funding</div>
+      <div class="np-hed"><a href="https://www.inkl.com/news/the-human-cost-of-global-aid-cuts-and-how-scotland-is-bucking-the-trend/" target="_blank" rel="noopener">The human cost of global aid cuts – and how Scotland is bucking the trend</a></div>
+      <div class="np-byline">inkl — 9 Oct 2026</div>
+      <div class="np-excerpt"><p>INTERNATIONAL aid budgets are being slashed across the world with devastating – if undercovered – consequences.</p><p>Take the US, historically the world's largest provider of international assistance.</p></div>
+    </div>
+<!-- ══════ END ARTICLE ══════ -->
+<!-- ══════ ARTICLE: ‘From assuming to knowing’: How impact evaluations support the design, delivery, — delete this whole block down to "END ARTICLE" to remove it ══════ -->
+<div class="np-card">
+      <div class="np-kicker">Policy, Budget &amp; Funding</div>
+            <div class="np-hed"><a href="https://www.ifpri.org/blog/from-assuming-to-knowing-how-impact-evaluations-support-the-design-delivery-and-scale-up-of-school-meal-programs/" target="_blank" rel="noopener">‘From assuming to knowing’: How impact evaluations support the design, delivery, and scale-up of school meal programs</a></div>
+      <div class="np-byline">IFPRI — 6 Oct 2026</div>
+      <div class="np-excerpt"><!-- NO EXCERPT — to add one, replace the <p class="np-read-link"> line below with:
+     <p>First paragraph…</p><p>Second paragraph… (optional)</p> -->
+<p class="np-read-link"><a href="https://www.ifpri.org/blog/from-assuming-to-knowing-how-impact-evaluations-support-the-design-delivery-and-scale-up-of-school-meal-programs/" target="_blank" rel="noopener">Read article</a></p></div>
+    </div>
+<!-- ══════ END ARTICLE ══════ -->
+<!-- ══════ ARTICLE: A Sample Proposal “A Sample Proposal “Inclusive Education Programs to Reduce Pov — delete this whole block down to "END ARTICLE" to remove it ══════ -->
+<div class="np-card">
+      <div class="np-kicker">Policy, Budget &amp; Funding</div>
+            <div class="np-hed"><a href="https://news.google.com/rss/articles/CBMi0gFBVV95cUxOSEkyTjhjMjN1MzZNdXdWVGh1VThZcm4tY1pNU3Y0cjVaLTRORHRJcmtHRmpxTFRiQ0x6M241QjFnc1MxcjNpdTY0RDFHYmRHSmJ6TVRwUFlLWmhWMFNvRVRTMjU5ZEJEa0trYzJqbllIdGJMUVlZZ05Kbm5IMkY5eGRVUk9sRFpfb1FnU04yYWxmMk9tT1Y1TnNDOTBoZG9icjBsbVdwdzFNekIwOERMcEllZ3c3MXFub3NCWFJpVzBHeWpZS3RJc2RzOUFCbWRPOGc?oc=5" target="_blank" rel="noopener">A Sample Proposal “A Sample Proposal “Inclusive Education Programs to Reduce Poverty in Malawi”</a></div>
+      <div class="np-byline">fundsforNGOs — 14 Jan 2025</div>
+      <div class="np-excerpt"><!-- NO EXCERPT — to add one, replace the <p class="np-read-link"> line below with:
+     <p>First paragraph…</p><p>Second paragraph… (optional)</p> -->
+<p class="np-read-link"><a href="https://news.google.com/rss/articles/CBMi0gFBVV95cUxOSEkyTjhjMjN1MzZNdXdWVGh1VThZcm4tY1pNU3Y0cjVaLTRORHRJcmtHRmpxTFRiQ0x6M241QjFnc1MxcjNpdTY0RDFHYmRHSmJ6TVRwUFlLWmhWMFNvRVRTMjU5ZEJEa0trYzJqbllIdGJMUVlZZ05Kbm5IMkY5eGRVUk9sRFpfb1FnU04yYWxmMk9tT1Y1TnNDOTBoZG9icjBsbVdwdzFNekIwOERMcEllZ3c3MXFub3NCWFJpVzBHeWpZS3RJc2RzOUFCbWRPOGc?oc=5" target="_blank" rel="noopener">Read article</a></p></div>
+    </div>
+<!-- ══════ END ARTICLE ══════ -->
+
+    <div class="np-divider"></div>
+
+    <div class="np-columns">
+      <div class="np-country">Sierra Leone</div>
+<!-- ══════ ARTICLE: Equitable Education Funding Must Reflect Real Needs-Jallah — delete this whole block down to "END ARTICLE" to remove it ══════ -->
+<div class="np-card">
+      <div class="np-kicker">Policy, Budget &amp; Funding</div>
+            <div class="np-hed"><a href="https://www.thenewdawnliberia.com/equitable-education-funding-must-reflect-real-needs-jallah/" target="_blank" rel="noopener">Equitable Education Funding Must Reflect Real Needs-Jallah</a></div>
+      <div class="np-byline">The New Dawn Liberia — 6 Oct 2026</div>
+      <div class="np-excerpt"><!-- NO EXCERPT — to add one, replace the <p class="np-read-link"> line below with:
+     <p>First paragraph…</p><p>Second paragraph… (optional)</p> -->
+<p class="np-read-link"><a href="https://www.thenewdawnliberia.com/equitable-education-funding-must-reflect-real-needs-jallah/" target="_blank" rel="noopener">Read article</a></p></div>
+    </div>
+<!-- ══════ END ARTICLE ══════ -->
+<!-- ══════ ARTICLE: INT’L DAY OF THE GIRL: Salesian Missions highlights programs that help girls gai — delete this whole block down to "END ARTICLE" to remove it ══════ -->
+<div class="np-card">
+      <div class="np-kicker">Policy, Budget &amp; Funding</div>
+            <div class="np-hed"><a href="https://missionnewswire.org/intl-day-of-the-girl-salesian-missions-highlights-programs-that-help-girls-gain-an-education/" target="_blank" rel="noopener">INT’L DAY OF THE GIRL: Salesian Missions highlights programs that help girls gain an education</a></div>
+      <div class="np-byline">MissionNewswire — 11 Oct 2026</div>
+      <div class="np-excerpt"><!-- NO EXCERPT — to add one, replace the <p class="np-read-link"> line below with:
+     <p>First paragraph…</p><p>Second paragraph… (optional)</p> -->
+<p class="np-read-link"><a href="https://missionnewswire.org/intl-day-of-the-girl-salesian-missions-highlights-programs-that-help-girls-gain-an-education/" target="_blank" rel="noopener">Read article</a></p></div>
+    </div>
+<!-- ══════ END ARTICLE ══════ -->
+<!-- ══════ ARTICLE: AI Regulation Must Balance Safety With Innovation: Google DeepMind's Chief AI Re — delete this whole block down to "END ARTICLE" to remove it ══════ -->
+<div class="np-card">
+      <div class="np-kicker">Technology &amp; Innovation in Education</div>
+            <div class="np-hed"><a href="https://news.google.com/rss/articles/CBMi9wFBVV95cUxQWlNfbFJWSHItaFhtUXRsWUY1Uml6dlBjMGhsT0hQRHZqNldoU0VKOVVMZ1dfQ0hhVnVLaEIxLWxIdUc0RkN1aEw3QUUzaHE4a3hkdVlBVFo2bVd1OEdmd19PT002eU5XUmpMZFBldW5PZXJBWmxCTlM5clZqRklaNUpTdFUxZEJlaXdlLVRaYVVsQkE0TlFxOGNaWVNXeVJzc1hjOTZIcTB3TXBvRmlsZXdMSVBzNnhaN1JHUWd5S2hZaTZERTJxMjZVTXQxbnFMMEF3cmI4akVSZ0JIczdQNXRoS2JYU1I2TDNfMm1OX1dYTzVyVS000gH3AUFVX3lxTFBaU19sUlZIci1oWG1RdGxZRjVSaXp2UGMwaGxPSFBEdmo2V2hTRUo5VUxnV19DSGFWdUtoQjEtbEh1RzRGQ3VoTDdBRTNocThreGR1WUFUWjZtV3U4R2Z3X09PTTZ5TldSakxkUGV1bk9lckFabEJOUzlyVmpGSVo1SlN0VTFkQmVpd2UtVFphVWxCQTROUXE4Y1pZU1d5UnNzWGM5NkhxMHdNcG9GaWxld0xJUHM2eFo3UkdRZ3lLaFlpNkRFMnEyNlVNdDFucUwwQXdyYjhqRVJnQkhzN1A1dGhLYlhTUjZMM18ybU5fV1hPNXJVLTQ?oc=5" target="_blank" rel="noopener">AI Regulation Must Balance Safety With Innovation: Google DeepMind's Chief AI Readiness Officer</a></div>
+      <div class="np-byline">NDTV Profit — 11 Oct 2026</div>
+      <div class="np-excerpt"><!-- NO EXCERPT — to add one, replace the <p class="np-read-link"> line below with:
+     <p>First paragraph…</p><p>Second paragraph… (optional)</p> -->
+<p class="np-read-link"><a href="https://news.google.com/rss/articles/CBMi9wFBVV95cUxQWlNfbFJWSHItaFhtUXRsWUY1Uml6dlBjMGhsT0hQRHZqNldoU0VKOVVMZ1dfQ0hhVnVLaEIxLWxIdUc0RkN1aEw3QUUzaHE4a3hkdVlBVFo2bVd1OEdmd19PT002eU5XUmpMZFBldW5PZXJBWmxCTlM5clZqRklaNUpTdFUxZEJlaXdlLVRaYVVsQkE0TlFxOGNaWVNXeVJzc1hjOTZIcTB3TXBvRmlsZXdMSVBzNnhaN1JHUWd5S2hZaTZERTJxMjZVTXQxbnFMMEF3cmI4akVSZ0JIczdQNXRoS2JYU1I2TDNfMm1OX1dYTzVyVS000gH3AUFVX3lxTFBaU19sUlZIci1oWG1RdGxZRjVSaXp2UGMwaGxPSFBEdmo2V2hTRUo5VUxnV19DSGFWdUtoQjEtbEh1RzRGQ3VoTDdBRTNocThreGR1WUFUWjZtV3U4R2Z3X09PTTZ5TldSakxkUGV1bk9lckFabEJOUzlyVmpGSVo1SlN0VTFkQmVpd2UtVFphVWxCQTROUXE4Y1pZU1d5UnNzWGM5NkhxMHdNcG9GaWxld0xJUHM2eFo3UkdRZ3lLaFlpNkRFMnEyNlVNdDFucUwwQXdyYjhqRVJnQkhzN1A1dGhLYlhTUjZMM18ybU5fV1hPNXJVLTQ?oc=5" target="_blank" rel="noopener">Read article</a></p></div>
+    </div>
+<!-- ══════ END ARTICLE ══════ -->
+
+<div class="np-country">Tanzania</div>
+<!-- ══════ ARTICLE: Tanzanian actress who 'butchered' english during filming, apologises — delete this whole block down to "END ARTICLE" to remove it ══════ -->
+<div class="np-card">
+      <div class="np-kicker">Policy, Budget &amp; Funding</div>
+            <div class="np-hed"><a href="https://news.google.com/rss/articles/CBMivgFBVV95cUxQelYtQUlDem11ZTl5TS1IWHNSaTVsUXlwR3NvMEpQbV9RcGd1LWFQVkdGMTNfTjRrNnpnS2F5T2RvRmRkZ1BBcXFsaGVyT3RiaDQzb2pDWWZtOGU2ejNkMjl1dmRiUEh6YVJHYWt0LXlBdkdCUkZxNHY0MVpndFhWTEhxc3VxdjhGVnFnOGt4WmEzRk5UV3dOQkdSaVBWNHFoS25XS2pyWnZOcG5sVzV0Skttb1NCd0NFWEwyZXRR0gHDAUFVX3lxTE9yMVJmS0JwSjBiNTlZa0huRVF1QWxRRG1KT25DSy1GSWhra0w5Q1dpN1BnOTREOG9IUGtyWGM5R3BJTnlnRUhmNTBCQTJTX05IZWZ2OG5uWUR6ZWtIYVVUcmlPdHNOYnhhNEV5RUVvaGVmUmkxeUFRZzBmWHhBdTZuS2wyTEZKRGpXTE94Q2Jkbk1BNGRhS0NoaVpOWVRmWkN0OEVtejlIcjhGTlZQZ3RSSllrM3dXOG5qb2l1S25kR1VVUQ?oc=5" target="_blank" rel="noopener">Tanzanian actress who 'butchered' english during filming, apologises</a></div>
+      <div class="np-byline">TNX Africa — 9 Oct 2026</div>
+      <div class="np-excerpt"><!-- NO EXCERPT — to add one, replace the <p class="np-read-link"> line below with:
+     <p>First paragraph…</p><p>Second paragraph… (optional)</p> -->
+<p class="np-read-link"><a href="https://news.google.com/rss/articles/CBMivgFBVV95cUxQelYtQUlDem11ZTl5TS1IWHNSaTVsUXlwR3NvMEpQbV9RcGd1LWFQVkdGMTNfTjRrNnpnS2F5T2RvRmRkZ1BBcXFsaGVyT3RiaDQzb2pDWWZtOGU2ejNkMjl1dmRiUEh6YVJHYWt0LXlBdkdCUkZxNHY0MVpndFhWTEhxc3VxdjhGVnFnOGt4WmEzRk5UV3dOQkdSaVBWNHFoS25XS2pyWnZOcG5sVzV0Skttb1NCd0NFWEwyZXRR0gHDAUFVX3lxTE9yMVJmS0JwSjBiNTlZa0huRVF1QWxRRG1KT25DSy1GSWhra0w5Q1dpN1BnOTREOG9IUGtyWGM5R3BJTnlnRUhmNTBCQTJTX05IZWZ2OG5uWUR6ZWtIYVVUcmlPdHNOYnhhNEV5RUVvaGVmUmkxeUFRZzBmWHhBdTZuS2wyTEZKRGpXTE94Q2Jkbk1BNGRhS0NoaVpOWVRmWkN0OEVtejlIcjhGTlZQZ3RSSllrM3dXOG5qb2l1S25kR1VVUQ?oc=5" target="_blank" rel="noopener">Read article</a></p></div>
+    </div>
+<!-- ══════ END ARTICLE ══════ -->
+<!-- ══════ ARTICLE: Zanzibar banks on COP12 Conference to bolster conservation of marine in the Indi — delete this whole block down to "END ARTICLE" to remove it ══════ -->
+<div class="np-card">
+      <div class="np-kicker">Policy, Budget &amp; Funding</div>
+            <div class="np-hed"><a href="https://dailynews.co.tz/zanzibar-banks-on-cop12-conference-to-bolster-conservation-of-marine-in-the-indian-ocean/" target="_blank" rel="noopener">Zanzibar banks on COP12 Conference to bolster conservation of marine in the Indian Ocean</a></div>
+      <div class="np-byline">Daily News — 8 Oct 2026</div>
+      <div class="np-excerpt"><!-- NO EXCERPT — to add one, replace the <p class="np-read-link"> line below with:
+     <p>First paragraph…</p><p>Second paragraph… (optional)</p> -->
+<p class="np-read-link"><a href="https://dailynews.co.tz/zanzibar-banks-on-cop12-conference-to-bolster-conservation-of-marine-in-the-indian-ocean/" target="_blank" rel="noopener">Read article</a></p></div>
+    </div>
+<!-- ══════ END ARTICLE ══════ -->
+<!-- ══════ ARTICLE: Masache to sponsor top Lualaje students who score Division One — delete this whole block down to "END ARTICLE" to remove it ══════ -->
+<div class="np-card">
+      <div class="np-kicker">Policy, Budget &amp; Funding</div>
+            <div class="np-hed"><a href="https://news.google.com/rss/articles/CBMijgFBVV95cUxPQ0ZuZV9IbGlkV0VFM0hjci01cUhfWEthbU9KenJONkZRY0hMRGlVNm00aldJMGNCS1pSV2wzX1BrOHBzQndKQm0zOUNwZHBibnVGOW41dlVITUpRMVlxSVRsanp0Zl9fZWRoT3I3TjN5R3U3VUk4cWlZT3FtYmNGdHJEOHoxYUtkZlE3bmhB?oc=5" target="_blank" rel="noopener">Masache to sponsor top Lualaje students who score Division One</a></div>
+      <div class="np-byline">https://www.therespondents.co.tz/ — 9 Oct 2026</div>
+      <div class="np-excerpt"><!-- NO EXCERPT — to add one, replace the <p class="np-read-link"> line below with:
+     <p>First paragraph…</p><p>Second paragraph… (optional)</p> -->
+<p class="np-read-link"><a href="https://news.google.com/rss/articles/CBMijgFBVV95cUxPQ0ZuZV9IbGlkV0VFM0hjci01cUhfWEthbU9KenJONkZRY0hMRGlVNm00aldJMGNCS1pSV2wzX1BrOHBzQndKQm0zOUNwZHBibnVGOW41dlVITUpRMVlxSVRsanp0Zl9fZWRoT3I3TjN5R3U3VUk4cWlZT3FtYmNGdHJEOHoxYUtkZlE3bmhB?oc=5" target="_blank" rel="noopener">Read article</a></p></div>
+    </div>
+<!-- ══════ END ARTICLE ══════ -->
+
+<div class="np-country">Burkina Faso</div>
+<!-- ══════ ARTICLE: ECA, UNFPA inaugurate digital platform to track Africa’s demographic dividend ro — delete this whole block down to "END ARTICLE" to remove it ══════ -->
+<div class="np-card">
+      <div class="np-kicker">Education &amp; the Workforce</div>
+            <div class="np-hed"><a href="https://nairametrics.com/2026/10/07/eca-unfpa-inaugurate-digital-platform-to-track-africas-demographic-dividend-roadmap/" target="_blank" rel="noopener">ECA, UNFPA inaugurate digital platform to track Africa’s demographic dividend roadmap</a></div>
+      <div class="np-byline">Nairametrics — 7 Oct 2026</div>
+      <div class="np-excerpt"><p>The Economic Commission for Africa (ECA) and the United Nations Population Fund (UNFPA) have inaugurated a digital platform to track the implementation of Africa’s demographic dividend roadmap.</p><p>The platform was unveiled during a three-day technical workshop in Abidjan, Côte d’Ivoire, according to an ECA statement issued on Wednesday in Abuja.</p><p>The initiative was developed by the ECA and UNFPA in collaboration with Côte d’Ivoire’s Ministry of Planning and Development through the National Population Office.</p></div>
+    </div>
+<!-- ══════ END ARTICLE ══════ -->
+<!-- ══════ ARTICLE: 'Nkoko Nketenkete' boosts local poultry production from 4.6% to 22% in one year  — delete this whole block down to "END ARTICLE" to remove it ══════ -->
+<div class="np-card">
+      <div class="np-kicker">Policy, Budget &amp; Funding</div>
+            <div class="np-hed"><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxQd1dlMWk2c1o0M1FqZTRpWXlkQ3duUko1ZDdTNTVQbTQ0U0hWVXg2Umpub0NlODFHWUNmMU1IVDZWaEd6NElSY3d3cUZILThYQXRQWVMxSnVEd0NsXzhMcVYwZ1h0bjNCSXVyWlYxT29Kb3pwdkljaWVlMklYZTlEaUdoUlhTdHZkNFFtejVHeTgyWDBvMjJBVXA3bGlvczVoaUVfb25kRGZkUjkyeFBlekZEM2NNTWRzaUNv?oc=5" target="_blank" rel="noopener">'Nkoko Nketenkete' boosts local poultry production from 4.6% to 22% in one year - Agric Minister</a></div>
+      <div class="np-byline">MyJoyOnline — 9 Oct 2026</div>
+      <div class="np-excerpt"><!-- NO EXCERPT — to add one, replace the <p class="np-read-link"> line below with:
+     <p>First paragraph…</p><p>Second paragraph… (optional)</p> -->
+<p class="np-read-link"><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxQd1dlMWk2c1o0M1FqZTRpWXlkQ3duUko1ZDdTNTVQbTQ0U0hWVXg2Umpub0NlODFHWUNmMU1IVDZWaEd6NElSY3d3cUZILThYQXRQWVMxSnVEd0NsXzhMcVYwZ1h0bjNCSXVyWlYxT29Kb3pwdkljaWVlMklYZTlEaUdoUlhTdHZkNFFtejVHeTgyWDBvMjJBVXA3bGlvczVoaUVfb25kRGZkUjkyeFBlekZEM2NNTWRzaUNv?oc=5" target="_blank" rel="noopener">Read article</a></p></div>
+    </div>
+<!-- ══════ END ARTICLE ══════ -->
+<!-- ══════ ARTICLE: School Meals in Emergencies: What They Cost and the Trade-Offs Involved — delete this whole block down to "END ARTICLE" to remove it ══════ -->
+<div class="np-card">
+      <div class="np-kicker">Policy, Budget &amp; Funding</div>
+            <div class="np-hed"><a href="https://news.google.com/rss/articles/CBMilAFBVV95cUxOMzM0RFRGMWZNT0FBaVYtbmEyLWZ4RkpKa09RclBwNUxXZ1E0bmJHeEhTXzFyQllwZ012RmY5WjhUeXFXa1V1ZmR3T1V3Mk5kMnRDUzV1WHdPcnFxNEVLUzhJQ2JSelNkY2NNZURuRzk5eUFCYTJkdTJmRmNCT3VsWkJwaVBwWHJBd29ybGVfOGcwQmJC?oc=5" target="_blank" rel="noopener">School Meals in Emergencies: What They Cost and the Trade-Offs Involved</a></div>
+      <div class="np-byline">Center for Global Development — 7 Oct 2026</div>
+      <div class="np-excerpt"><!-- NO EXCERPT — to add one, replace the <p class="np-read-link"> line below with:
+     <p>First paragraph…</p><p>Second paragraph… (optional)</p> -->
+<p class="np-read-link"><a href="https://news.google.com/rss/articles/CBMilAFBVV95cUxOMzM0RFRGMWZNT0FBaVYtbmEyLWZ4RkpKa09RclBwNUxXZ1E0bmJHeEhTXzFyQllwZ012RmY5WjhUeXFXa1V1ZmR3T1V3Mk5kMnRDUzV1WHdPcnFxNEVLUzhJQ2JSelNkY2NNZURuRzk5eUFCYTJkdTJmRmNCT3VsWkJwaVBwWHJBd29ybGVfOGcwQmJC?oc=5" target="_blank" rel="noopener">Read article</a></p></div>
+    </div>
+<!-- ══════ END ARTICLE ══════ -->
+
+<div class="np-country">Ghana</div>
+<!-- ══════ ARTICLE: India and Ghana Sign 2 Historic MoUs to Advance Agricultural Research, Education — delete this whole block down to "END ARTICLE" to remove it ══════ -->
+<div class="np-card">
+      <div class="np-kicker">Technology &amp; Innovation in Education</div>
+      <div class="np-photo-slot">
+          <!-- ═══ IMAGE: replace the <svg>...</svg> below with your own artwork — e.g. <img src="your-file.png" alt="" style="width:82%;height:82%;object-fit:contain;"> — keep this outer .np-photo-slot div as-is, it provides the frame/border/texture ═══ -->
+          <svg viewBox="0 0 320 200" fill="none" stroke="#0d0d0a" stroke-linecap="round" stroke-linejoin="round">
+            <g stroke-width="1" opacity="0.45">
+              <path d="M160 20 L160 2" />
+              <path d="M160 20 L130 6" />
+              <path d="M160 20 L190 6" />
+              <path d="M160 20 L104 16" />
+              <path d="M160 20 L216 16" />
+            </g>
+            <rect x="126" y="18" width="68" height="28" stroke-width="2.2" />
+            <rect x="52" y="44" width="216" height="128" stroke-width="2.4" />
+            <path d="M76 128 H244" stroke-width="1.3" opacity="0.6" />
+            <text x="160" y="112" font-family="Georgia, 'Times New Roman', serif" font-size="46" font-weight="700" fill="#0d0d0a" stroke="none" text-anchor="middle" letter-spacing="2">abcdef</text>
+          </svg>
+          <!-- ═══ END IMAGE ═══ -->
+        </div>
+      <div class="np-hed"><a href="https://utkarsh.com/current-affairs/international/agreements-and-mou/india-and-ghana-sign-2-historic-mous-to-advance-agricultural-research-education-and-technology-transfer" target="_blank" rel="noopener">India and Ghana Sign 2 Historic MoUs to Advance Agricultural Research, Education and Technology Transfer</a></div>
+      <div class="np-byline">Utkarsh Classes — 8 Oct 2026</div>
+      <div class="np-excerpt"><p>India and Ghana have signed two MoUs to work together on agriculture and science, as announced on 7 October 2026. External Affairs Minister Dr. S. Jaishankar and Ghana's Foreign Minister Samuel Okudzeto Ablakwa witnessed the exchange.</p><p>South-South cooperation means developing countries sharing knowledge and technology with each other. This MoU gives Indian institutions like ICAR a chance to take their research to African farms.</p><p>The ICAR deal runs for five years. It covers joint research, scientific exchange, capacity building and the commercial use of farm technologies. Arima Farms Ltd., Ghana, is the commercial partner to CSIR-CRI.</p></div>
+    </div>
+<!-- ══════ END ARTICLE ══════ -->
+<!-- ══════ ARTICLE: Govt to sustain teacher education funding - Vice-President assures at Ghana Teac — delete this whole block down to "END ARTICLE" to remove it ══════ -->
+<div class="np-card">
+      <div class="np-kicker">Policy, Budget &amp; Funding</div>
+            <div class="np-hed"><a href="https://news.google.com/rss/articles/CBMi3gFBVV95cUxQM1BpcjYyZl91b29IYmhlcmR6dWhUYmpndVBOTHNJaVNDZDZnTE9oUU1KT3U4LTNJcnJYQzN2Q0FBOVh4QU42X1A2OG5KT005VGRlR2dHNjRwTTExNXQxMG5UcFg2bmZ2R1VMTzBaaWJBSnBoejFJTXB3cFp5dXJpUkc5QXJVaXVNTFl4OTIwQVAteXQyZE4yM1FpVUh6bzVKazVYeHh5TlN1c2tuODJZWi1vXzJ4QS1OT1lUamlfcUV5SlhlUFdUSmdRVm1CbDVfRU9RY3puMlU5dHl2Zmc?oc=5" target="_blank" rel="noopener">Govt to sustain teacher education funding - Vice-President assures at Ghana Teacher Prize</a></div>
+      <div class="np-byline">Graphic Online — 6 Oct 2026</div>
+      <div class="np-excerpt"><!-- NO EXCERPT — to add one, replace the <p class="np-read-link"> line below with:
+     <p>First paragraph…</p><p>Second paragraph… (optional)</p> -->
+<p class="np-read-link"><a href="https://news.google.com/rss/articles/CBMi3gFBVV95cUxQM1BpcjYyZl91b29IYmhlcmR6dWhUYmpndVBOTHNJaVNDZDZnTE9oUU1KT3U4LTNJcnJYQzN2Q0FBOVh4QU42X1A2OG5KT005VGRlR2dHNjRwTTExNXQxMG5UcFg2bmZ2R1VMTzBaaWJBSnBoejFJTXB3cFp5dXJpUkc5QXJVaXVNTFl4OTIwQVAteXQyZE4yM1FpVUh6bzVKazVYeHh5TlN1c2tuODJZWi1vXzJ4QS1OT1lUamlfcUV5SlhlUFdUSmdRVm1CbDVfRU9RY3puMlU5dHl2Zmc?oc=5" target="_blank" rel="noopener">Read article</a></p></div>
+    </div>
+<!-- ══════ END ARTICLE ══════ -->
+<!-- ══════ ARTICLE: Ecobank commissions new Digital Learning Centre at La-Nkwantanang Cluster of Sch — delete this whole block down to "END ARTICLE" to remove it ══════ -->
+<div class="np-card">
+      <div class="np-kicker">Technology &amp; Innovation in Education</div>
+            <div class="np-hed"><a href="https://www.modernghana.com/ecobank-commissions-new-digital-learning-centre-at-la-nkwantanang-cluster-of-schools-primebusiness/" target="_blank" rel="noopener">Ecobank commissions new Digital Learning Centre at La-Nkwantanang Cluster of Schools| PrimeBusiness</a></div>
+      <div class="np-byline">Modern Ghana — 5 Oct 2026</div>
+      <div class="np-excerpt"><!-- NO EXCERPT — to add one, replace the <p class="np-read-link"> line below with:
+     <p>First paragraph…</p><p>Second paragraph… (optional)</p> -->
+<p class="np-read-link"><a href="https://www.modernghana.com/ecobank-commissions-new-digital-learning-centre-at-la-nkwantanang-cluster-of-schools-primebusiness/" target="_blank" rel="noopener">Read article</a></p></div>
+    </div>
+<!-- ══════ END ARTICLE ══════ -->
+
+<div class="np-country">Liberia</div>
+<!-- ══════ ARTICLE: Liberia: From Selection to Field Readiness: School Monitoring Interns Begin Trai — delete this whole block down to "END ARTICLE" to remove it ══════ -->
+<div class="np-card">
+      <div class="np-kicker">Policy, Budget &amp; Funding</div>
+            <div class="np-hed"><a href="https://news.google.com/rss/articles/CBMirgFBVV95cUxOVkNILS15VXZKWjQxREc3RS1YeHY3aC00cHBoT0gxNmF0c094OVZ1aW40aHVuakRSYjBBdzJPUDQ3THRMV2YwZzhjRGp3R0RnbFVnN21QMXZDTnlPQkwwZEFyeHlOWldhaUN0a3NmT2NZZFIxaElfaERWQk0xNmhuMHFhRzZ6SWlpODdBajkwMEVybGY2RVVPVi1ENWNLcndNWFV6d3FhME9yZmZWVHc?oc=5" target="_blank" rel="noopener">Liberia: From Selection to Field Readiness: School Monitoring Interns Begin Training</a></div>
+      <div class="np-byline">Africa.com — 9 Oct 2026</div>
+      <div class="np-excerpt"><!-- NO EXCERPT — to add one, replace the <p class="np-read-link"> line below with:
+     <p>First paragraph…</p><p>Second paragraph… (optional)</p> -->
+<p class="np-read-link"><a href="https://news.google.com/rss/articles/CBMirgFBVV95cUxOVkNILS15VXZKWjQxREc3RS1YeHY3aC00cHBoT0gxNmF0c094OVZ1aW40aHVuakRSYjBBdzJPUDQ3THRMV2YwZzhjRGp3R0RnbFVnN21QMXZDTnlPQkwwZEFyeHlOWldhaUN0a3NmT2NZZFIxaElfaERWQk0xNmhuMHFhRzZ6SWlpODdBajkwMEVybGY2RVVPVi1ENWNLcndNWFV6d3FhME9yZmZWVHc?oc=5" target="_blank" rel="noopener">Read article</a></p></div>
+    </div>
+<!-- ══════ END ARTICLE ══════ -->
+<!-- ══════ ARTICLE: ECOWAS Business Startup Programme Enjoys Growing Patronage — delete this whole block down to "END ARTICLE" to remove it ══════ -->
+<div class="np-card">
+      <div class="np-kicker">Technology &amp; Innovation in Education</div>
+            <div class="np-hed"><a href="https://gnnliberia.com/ecowas-business-startup-programme-enjoys-growing-patronage/" target="_blank" rel="noopener">ECOWAS Business Startup Programme Enjoys Growing Patronage</a></div>
+      <div class="np-byline">Global News Network Liberia — 7 Oct 2026</div>
+      <div class="np-excerpt"><!-- NO EXCERPT — to add one, replace the <p class="np-read-link"> line below with:
+     <p>First paragraph…</p><p>Second paragraph… (optional)</p> -->
+<p class="np-read-link"><a href="https://gnnliberia.com/ecowas-business-startup-programme-enjoys-growing-patronage/" target="_blank" rel="noopener">Read article</a></p></div>
+    </div>
+<!-- ══════ END ARTICLE ══════ -->
+<!-- ══════ ARTICLE: Pursuing the Promise of AI: A Guide for African Nonprofits to Advance Their Miss — delete this whole block down to "END ARTICLE" to remove it ══════ -->
+<div class="np-card">
+      <div class="np-kicker">Technology &amp; Innovation in Education</div>
+            <div class="np-hed"><a href="https://gnnliberia.com/pursuing-the-promise-of-ai-a-guide-for-african-nonprofits-to-advance-their-missions/" target="_blank" rel="noopener">Pursuing the Promise of AI: A Guide for African Nonprofits to Advance Their Missions</a></div>
+      <div class="np-byline">Global News Network Liberia — 9 Oct 2026</div>
+      <div class="np-excerpt"><!-- NO EXCERPT — to add one, replace the <p class="np-read-link"> line below with:
+     <p>First paragraph…</p><p>Second paragraph… (optional)</p> -->
+<p class="np-read-link"><a href="https://gnnliberia.com/pursuing-the-promise-of-ai-a-guide-for-african-nonprofits-to-advance-their-missions/" target="_blank" rel="noopener">Read article</a></p></div>
+    </div>
+<!-- ══════ END ARTICLE ══════ -->
+
+    </div>
+  </div>
+
+  <div class="np-footer">
+    <strong>Education News Roundup</strong><br>
+    Monday 12 October 2026 &nbsp;·&nbsp; Mon, 12 Oct 2026 07:01 UTC<br>
+    Articles sourced from Google News RSS · Top 3 per country ranked by estimated reach<br>
+    Excerpts reproduced verbatim from publisher pages where accessible<br><br>
+    This roundup is produced automatically through a news scraper. Kindly click each article
+    title to read the full piece on the original publisher's site. Content has not always been
+    editorially reviewed.<br><br>
+    Tags applied where terms appear in article titles or extracted text:
+    <strong class="np-tag-legend">Youth · Women · Disabilities · Refugees · IW</strong>
+  </div>
+</div>
+
+</body>
+</html>
